@@ -136,18 +136,22 @@
   $$('[data-count]').forEach(el => countIO.observe(el));
 
   // ---------- palabra rotativa ----------
-  const words = ['páginas web', 'apps móviles', 'marcas', 'tiendas online', 'sistemas'];
-  const word = $('.rotator__word');
+  const rotator = $('.rotator');
+  const words = $$('.rotator__word', rotator);
   let wi = 0;
   if (!reduceMotion) setInterval(() => {
-    word.classList.add('out');
-    setTimeout(() => {
-      wi = (wi + 1) % words.length;
-      word.textContent = words[wi];
-      word.classList.remove('out');
-      word.style.animation = 'none'; void word.offsetWidth; word.style.animation = '';
-    }, 420);
-  }, 2600);
+    if (document.hidden) return;
+    const prev = words[wi];
+    wi = (wi + 1) % words.length;
+    const next = words[wi];
+    prev.classList.remove('is-active');
+    prev.classList.add('is-out');
+    prev.setAttribute('aria-hidden', 'true');
+    // la palabra que sale vuelve abajo sin animarse, lista para su próximo turno
+    setTimeout(() => { prev.style.transition = 'none'; prev.classList.remove('is-out'); void prev.offsetWidth; prev.style.transition = ''; }, 800);
+    next.classList.add('is-active');
+    next.removeAttribute('aria-hidden');
+  }, 2800);
 
   // ---------- nav ----------
   const nav = $('.nav'), burger = $('.burger'), mnav = $('#mnav'), bar = $('.progress'), body = document.body;
@@ -222,7 +226,7 @@
     const colors = ['211,3,3', '44,170,179', '44,140,179'];
     let w, h, dpr, pts = [], mouse = { x: -9999, y: -9999 }, running = true;
     const resize = () => {
-      dpr = Math.min(devicePixelRatio || 1, 2);
+      dpr = Math.min(devicePixelRatio || 1, 1.5);
       w = canvas.clientWidth; h = canvas.clientHeight;
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -246,8 +250,9 @@
       for (let i = 0; i < pts.length; i++) {
         const a = pts[i];
         for (let j = i + 1; j < pts.length; j++) {
-          const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-          if (d < 130) {
+          const b = pts[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+          if (d2 < 16900) {
+            const d = Math.sqrt(d2);
             ctx.strokeStyle = `rgba(${a.c},${(1 - d / 130) * 0.35})`;
             ctx.lineWidth = 0.7;
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();

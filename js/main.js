@@ -5,32 +5,7 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
   // ---------- datos ----------
-  const projects = [
-    ['web', '14801186192', 'Colegio Cristóbal Colón', 'Educación'],
-    ['web', '14801195822', 'Ejecutivos Mexicanos', 'Educación'],
-    ['web', '14801257962', 'American School Chiapas', 'Educación'],
-    ['web', '14801237282', 'Dipemci', 'Construcción'],
-    ['web', '14801214712', 'Edifica Construcciones', 'Construcción'],
-    ['web', '14801247272', 'Grupo Halley', 'Alimentos'],
-    ['web', '14800328772', 'Cecilia Brunette', 'Eventos'],
-    ['web', '14801263002', 'Photobook', 'Eventos'],
-    ['web', '14800341952', 'Banquetes Puerto Evento', 'Eventos'],
-    ['web', '14801242082', 'LaDeport', 'Noticias'],
-    ['web', '14801199212', 'Líderes MX', 'Deportes / Noticias'],
-    ['web', '14801250882', 'Dr. Raúl Barragán', 'Salud'],
-    ['web', '14801254312', 'Mezderma', 'Salud'],
-    ['web', '14801268812', 'Perfumes Monchéri', 'Salud'],
-    ['web', '14801174552', 'Indegsa', 'Industria'],
-    ['web', '14800332872', 'Procovi', 'Seguridad privada'],
-    ['web', '14801280352', 'Ferrenorte', 'Ecommerce'],
-    ['identidad', '14801292942', 'Soy Geek', 'Tecnología'],
-    ['identidad', '14801296822', 'Asadero El Carboncito', 'Alimentos'],
-    ['identidad', '14801300092', 'Proclean Solutions', 'Salud'],
-    ['identidad', '14801302282', 'Procovi', 'Seguridad privada'],
-    ['identidad', '14801304402', 'Tendsa Group', 'Industria'],
-    ['sistemas', '14801313632', 'Constructora Zerpa', 'Construcción'],
-    ['sistemas', '14801317222', 'Hasue de México', 'Industria'],
-  ];
+  const projects = window.PROJECTS || [];
   const clients = [
     ['colon', 'Colegio Cristóbal Colón'], ['aaa', 'Asociación de Agentes Aduanales de Veracruz'], ['cmic', 'CMIC'],
     ['carboncito', 'El Carboncito'], ['expediente', 'Blog Expediente'], ['lideres', 'Líderes'],
@@ -45,12 +20,21 @@
     ['kidiatras', 'Kidiatras'], ['drraul', 'Dr. Raúl Barragán'], ['ejemex', 'Ejecutivos Mexicanos'],
   ];
 
-  // ---------- proyectos ----------
+  // ---------- proyectos: iMac + iPhone ----------
+  const catName = { web: 'Página web', sistemas: 'Sistema informático', identidad: 'Identidad corporativa' };
+  const scene = p => `
+    <div class="scene" aria-hidden="true">
+      <div class="imac">
+        <div class="imac__body"><div class="imac__screen"><img src="assets/projects/screens/${p.id}.jpg" alt="" loading="lazy"></div><div class="imac__chin"></div></div>
+        <div class="imac__stand"></div><div class="imac__foot"></div>
+      </div>
+      <div class="iphone"><div class="iphone__screen"><span class="iphone__island"></span><img src="assets/projects/screens/${p.id}.jpg" alt="" loading="lazy"></div></div>
+    </div>`;
   const grid = $('#projects');
-  grid.innerHTML = projects.map(([cat, img, name, sector], i) => `
-    <article class="project reveal" data-cat="${cat}" style="--d:${(i % 4) * 0.06}s" tabindex="0">
-      <img src="assets/projects/${img}.png" alt="${name}" loading="lazy" width="494" height="494">
-      <div class="project__info"><h3>${name}</h3><span>${sector}</span></div>
+  grid.innerHTML = projects.map((p, i) => `
+    <article class="project reveal" role="button" tabindex="0" data-cat="${p.cat}" data-i="${i}" style="--d:${(i % 3) * 0.08}s" aria-label="Ver proyecto ${p.name}">
+      ${scene(p)}
+      <div class="project__meta"><div><h3>${p.name}</h3><span>${p.sector}</span></div><span class="project__plus" aria-hidden="true">+</span></div>
     </article>`).join('');
 
   $$('.filter').forEach(btn => btn.addEventListener('click', () => {
@@ -68,6 +52,58 @@
         items.forEach(el => el.classList.remove('is-leaving'))));
     }, reduceMotion ? 0 : 280);
   }));
+
+  // ---------- popup de proyecto ----------
+  const modal = $('#pmodal');
+  let current = -1, lastFocus = null;
+  const visible = () => $$('.project:not(.is-hidden)', grid).map(el => +el.dataset.i);
+  const fill = i => {
+    const p = projects[i], list = visible(), pos = list.indexOf(i);
+    current = i;
+    $('.pmodal__stage', modal).innerHTML = scene(p);
+    $('.pmodal__tags', modal).innerHTML = `<span>${catName[p.cat]}</span><span>${p.sector}</span>`;
+    $('#pm-title').textContent = p.name;
+    $('.pmodal__desc', modal).innerHTML = p.desc.map(d => `<p>${d}</p>`).join('');
+    $('.pmodal__actions', modal).innerHTML =
+      `<a href="#contacto" class="btn btn--red" data-close>Quiero un proyecto así</a>` +
+      (p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="btn btn--ghost">Ver sitio ↗</a>` : '');
+    $('.pmodal__count', modal).textContent = `${pos + 1} / ${list.length}`;
+    // reinicia las animaciones de entrada
+    $$('.pmodal__info > *', modal).forEach(el => { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
+  };
+  const openModal = i => {
+    lastFocus = document.activeElement;
+    fill(i);
+    modal.hidden = false;
+    document.body.classList.add('pmodal-open');
+    requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add('is-open')));
+    $('.pmodal__close', modal).focus({ preventScroll: true });
+  };
+  const closeModal = () => {
+    if (modal.hidden) return;
+    modal.classList.remove('is-open');
+    document.body.classList.remove('pmodal-open');
+    setTimeout(() => { modal.hidden = true; }, reduceMotion ? 0 : 450);
+    lastFocus?.focus({ preventScroll: true });
+  };
+  const step = d => {
+    const list = visible(), pos = list.indexOf(current);
+    fill(list[(pos + d + list.length) % list.length]);
+  };
+  grid.addEventListener('click', e => { const card = e.target.closest('.project'); if (card) openModal(+card.dataset.i); });
+  grid.addEventListener('keydown', e => {
+    const card = e.target.closest('.project');
+    if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openModal(+card.dataset.i); }
+  });
+  modal.addEventListener('click', e => { if (e.target.closest('[data-close]')) closeModal(); });
+  $('.pmodal__prev', modal).addEventListener('click', () => step(-1));
+  $('.pmodal__next', modal).addEventListener('click', () => step(1));
+  addEventListener('keydown', e => {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'ArrowLeft') step(-1);
+  });
 
   // ---------- clientes (dos filas en marquesina) ----------
   const half = Math.ceil(clients.length / 2);
@@ -114,27 +150,36 @@
   }, 2600);
 
   // ---------- nav ----------
-  const nav = $('.nav'), toggle = $('.nav__toggle'), menu = $('#menu'), bar = $('.progress');
+  const nav = $('.nav'), burger = $('.burger'), mnav = $('#mnav'), bar = $('.progress'), body = document.body;
   let lastY = 0;
   const onScroll = () => {
     const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
     nav.classList.toggle('is-scrolled', y > 40);
-    nav.classList.toggle('is-hidden', y > 400 && y > lastY && !menu.classList.contains('is-open'));
+    nav.classList.toggle('is-hidden', y > 400 && y > lastY && !body.classList.contains('menu-open'));
     bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
     lastY = y;
   };
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // menú móvil: el círculo nace en el centro de la hamburguesa
   const setMenu = open => {
-    menu.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      const r = burger.getBoundingClientRect();
+      mnav.style.setProperty('--cx', r.left + r.width / 2 + 'px');
+      mnav.style.setProperty('--cy', r.top + r.height / 2 + 'px');
+    }
+    body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    if (open) mnav.removeAttribute('inert'); else mnav.setAttribute('inert', '');
   };
-  toggle.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
-  $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+  burger.addEventListener('click', () => setMenu(!body.classList.contains('menu-open')));
+  mnav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && body.classList.contains('menu-open')) { setMenu(false); burger.focus(); } });
+  addEventListener('resize', () => { if (innerWidth > 860 && body.classList.contains('menu-open')) setMenu(false); });
 
-  const links = $$('.nav__links a:not(.btn)');
+  const links = [...$$('.nav__links a:not(.btn)'), ...$$('.mnav__links a')];
   const secIO = new IntersectionObserver(entries => entries.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('is-active', a.hash === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });

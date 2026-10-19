@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/?lang=en"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/aviso-de-privacidad.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

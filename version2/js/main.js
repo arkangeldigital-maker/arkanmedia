@@ -40,7 +40,7 @@
   const clientCard = ([f, n], clone) => `<div class="client"${clone ? ' aria-hidden="true"' : ''}><img src="../assets/clients-t/${f.includes('.') ? f : f + '.png'}" alt="${clone ? '' : n}" loading="lazy" draggable="false"><span class="client__name">${n}</span></div>`;
 
   // ---------- ajuste de textos grandes: si una palabra no cabe, se reduce el tamaño ----------
-  const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span, .client__name, .global__title';
+  const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span, .client__name, .global__title, .step h3';
   const fitEl = el => {
     el.style.fontSize = '';
     const inline = getComputedStyle(el).display.startsWith('inline');
@@ -203,20 +203,45 @@
 
   // ---------- formulario ----------
   const form = $('#form'), note = $('.form__note', form);
-  let via = 'whatsapp';
+  let via = 'direct';
   $$('button[data-via]', form).forEach(b => b.addEventListener('click', () => { via = b.dataset.via; }));
   form.addEventListener('submit', e => {
     e.preventDefault();
     let ok = true;
-    $$('input:not([type=checkbox]), textarea', form).forEach(f => { const bad = !f.checkValidity(); f.closest('.field').classList.toggle('is-invalid', bad); if (bad) ok = false; });
+    $$('.field input, .field textarea', form).forEach(f => { const bad = !f.checkValidity(); f.closest('.field').classList.toggle('is-invalid', bad); if (bad) ok = false; });
     if (!ok) { note.textContent = UI.fix; return; }
+    const privacy = $('input[name=privacidad]', form);
+    privacy.closest('.check').classList.toggle('is-invalid', !privacy.checked);
+    if (!privacy.checked) { note.textContent = UI.accept || 'Acepta el aviso de privacidad para continuar.'; return; }
+    if ($('.form__honey', form).value) return; // relleno automático de robots
     const d = new FormData(form), interes = $$('.chips input:checked', form).map(c => c.nextElementSibling.textContent.trim());
     const text = `${UI.hi} ${d.get('nombre')}.\n\n${d.get('mensaje')}` + (interes.length ? `\n\n${UI.interest}: ${interes.join(', ')}` : '') + `\n\nEmail: ${d.get('email')}\n${UI.phone}: ${d.get('telefono')}`;
-    const url = via === 'whatsapp' ? `https://wa.me/522297819005?text=${encodeURIComponent(text)}`
-      : `mailto:contacto@arkanmedia.com?subject=${encodeURIComponent(UI.subject)}&body=${encodeURIComponent(text)}`;
-    window.open(url, via === 'whatsapp' ? '_blank' : '_self');
-    note.textContent = UI.thanks;
+    if (via === 'whatsapp') {
+      window.open(`https://wa.me/522297819005?text=${encodeURIComponent(text)}`, '_blank');
+      note.textContent = UI.thanks;
+      return;
+    }
+    // envío directo al correo de ArkanMedia (FormSubmit), sin que el visitante abra otra app
+    form.classList.add('is-sending');
+    note.textContent = UI.sending || 'Enviando…';
+    fetch('https://formsubmit.co/ajax/contacto@arkanmedia.com', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ _subject: UI.subject, _template: 'table', _captcha: 'false', Nombre: d.get('nombre'), Email: d.get('email'), Telefono: d.get('telefono'), Interes: interes.join(', '), Mensaje: d.get('mensaje'), Idioma: window.LANG || 'es', _replyto: d.get('email') }),
+    }).then(r => r.json()).then(r => {
+      if (String(r.success) !== 'true') throw new Error(r.message);
+      form.reset();
+      note.textContent = UI.thanks;
+    }).catch(() => { note.textContent = UI.fail || 'No se pudo enviar. Inténtalo de nuevo o escríbenos por WhatsApp.'; })
+      .finally(() => form.classList.remove('is-sending'));
   });
+
+  // ---------- preguntas frecuentes: una abierta a la vez ----------
+  $$('.qa__q').forEach(q => q.addEventListener('click', () => {
+    const item = q.closest('.qa'), open = !item.classList.contains('is-open');
+    $$('.qa.is-open').forEach(o => { o.classList.remove('is-open'); $('.qa__q', o).setAttribute('aria-expanded', 'false'); });
+    item.classList.toggle('is-open', open);
+    q.setAttribute('aria-expanded', open);
+  }));
 
   // ---------- slider de clientes ----------
   // cada columna lleva 1 logo en escritorio y 2 en celular (dos filas); se recorre por columnas
@@ -276,6 +301,7 @@
   // ---------- sin GSAP: todo visible y funcional ----------
   const countUp = el => { el.textContent = el.dataset.count; };
   if (!hasGsap) {
+    $$('.step').forEach(st => st.classList.add('is-on'));
     $('.loader').remove(); body.classList.remove('is-loading');
     words.forEach(w => { w.style.opacity = 1; });
     $$('[data-count]').forEach(countUp);
@@ -400,6 +426,14 @@
       return () => { tr.removeEventListener('scroll', upd); arrows.forEach(a => a.removeEventListener('click', onClick)); };
     },
   });
+
+  // ---------- proceso: la línea se llena y cada paso se enciende al pasar ----------
+  const vertical = () => innerWidth <= 760;
+  gsap.fromTo('.steps__line i', { scaleX: 0, scaleY: 0 }, { scaleX: () => vertical() ? 1 : 1, scaleY: 1, ease: 'none',
+    scrollTrigger: { trigger: '.steps', start: 'top 75%', end: 'bottom 55%', scrub: true, invalidateOnRefresh: true } });
+  $$('.step').forEach(step => ScrollTrigger.create({ trigger: step, start: 'top 70%', onEnter: () => step.classList.add('is-on'), onLeaveBack: () => step.classList.remove('is-on') }));
+  gsap.from('.step', { y: 40, opacity: 0, duration: 1, ease: 'expo.out', stagger: .12, scrollTrigger: { trigger: '.steps', start: 'top 80%' } });
+  gsap.from('.qa', { y: 30, opacity: 0, duration: .9, ease: 'expo.out', stagger: .07, scrollTrigger: { trigger: '.faq__list', start: 'top 85%' } });
 
   // ---------- detalles gráficos: se desplazan a distinta velocidad ----------
   $$('.deco[data-speed]').forEach(el => {

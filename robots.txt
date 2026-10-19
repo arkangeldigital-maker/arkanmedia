@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arkangeldigital-maker.github.io/arkanmedia/sitemap.xml

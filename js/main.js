@@ -74,6 +74,7 @@
   const openModal = i => {
     lastFocus = document.activeElement;
     fill(i);
+    $('.pmodal__panel', modal).scrollTop = 0;
     modal.hidden = false;
     document.body.classList.add('pmodal-open');
     requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add('is-open')));
@@ -89,6 +90,8 @@
   const step = d => {
     const list = visible(), pos = list.indexOf(current);
     fill(list[(pos + d + list.length) % list.length]);
+    // al cambiar de proyecto, vuelve al inicio del detalle
+    $('.pmodal__panel', modal).scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   };
   grid.addEventListener('click', e => { const card = e.target.closest('.project'); if (card) openModal(+card.dataset.i); });
   grid.addEventListener('keydown', e => {

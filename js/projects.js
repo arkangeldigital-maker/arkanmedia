@@ -9,7 +9,7 @@ window.PROJECTS = [
    "El Centro de Estudios Cristóbal Colón tiene sus orígenes en 1944 cuando surgió entre la sociedad veracruzana la necesidad de proporcionar una alternativa a quienes estaban preocupados por la formación de sus hijos.",
    "Sitio web del Colegio Cristóbal Colón que permite gestionar sus noticias, eventos e información de sus niveles académicos desde un panel administrador."
   ],
-  "url": "https://www.colon.mx"
+  "url": ""
  },
  {
   "id": "14801195822",
@@ -30,7 +30,7 @@ window.PROJECTS = [
   "desc": [
    "The American School Foundation of Chiapas, A.C., was founded in 1991 in the city of Tuxtla Gutiérrez as a bilingual and multicultural educational institution. Starting from Preschool level and higher levels due to the growth of our student body and the educational demand, we opened up Elementary School and Middle School levels."
   ],
-  "url": "https://www.americanschool.edu.mx/"
+  "url": ""
  },
  {
   "id": "14801237282",
@@ -105,7 +105,7 @@ window.PROJECTS = [
   "desc": [
    "Sitio web de noticias deportivas. Portal de noticias donde puede gestionar publicidad, noticias por categorías, apartados especiales y estadísticas de fútbol."
   ],
-  "url": "https://www.ladeport.com/"
+  "url": ""
  },
  {
   "id": "14801199212",
@@ -116,7 +116,7 @@ window.PROJECTS = [
    "Entrenamiento y capacitación de taekwondo. Proyecto mexicano multidisciplinario, especializado en Taekwondo que asesora y capacita íntegramente al deportista.",
    "Sitio web responsivo que permite gestionar newsletter y blog de artículos de cuidado deportivo."
   ],
-  "url": "https://www.lideresmx.com"
+  "url": ""
  },
  {
   "id": "14801250882",
@@ -127,7 +127,7 @@ window.PROJECTS = [
    "Entre sus principales acreditaciones se encuentran el estar certificado por el Consejo Mexicano de Otorrinolaringología y Cirugía de Cabeza y Cuello, organismo que se encarga de avalar, certificar y mantener un óptimo nivel de actualización a los médicos de dicha especialidad.",
    "Sitio web que gestiona casos clínicos y servicios. Incluye buena posición en Google."
   ],
-  "url": "https://www.raulbarragan.com/"
+  "url": ""
  },
  {
   "id": "14801254312",
@@ -158,7 +158,7 @@ window.PROJECTS = [
    "Inspecciones No Destructivas del Golfo S.A. de C.V. es una empresa fundada en el año 2004, con el objeto de cubrir las necesidades de servicios en las áreas de Pruebas No Destructivas, Servicios e Inspección Submarina así como equipos para inspección y manejo de tubería petrolera.",
    "Sitio web con mucha edición fotográfica para lograr marcar la identidad del cliente."
   ],
-  "url": "https://www.indegsa.com.mx"
+  "url": ""
  },
  {
   "id": "14800332872",
@@ -242,7 +242,7 @@ window.PROJECTS = [
    "Estamos comprometidos en cuidar y conservar la integridad física de nuestro personal, contribuir con la preservación del medio ambiente, así como salvaguardar las instalaciones propias y de nuestros clientes, por lo que contamos con un reglamento de seguridad e higiene muy estricto que exigimos se cumpla en su totalidad.",
    "Sistema para gestionar operadores, clientes, maquinaria, insumos, operaciones, nómina, productos y diesel por maquinaria."
   ],
-  "url": "https://www.constructorazerpa.com/"
+  "url": ""
  },
  {
   "id": "14801317222",
@@ -253,6 +253,6 @@ window.PROJECTS = [
    "Somos una compañía mayoritariamente mexicana que proporciona un servicio integral de compra-venta, almacenamiento y distribución de productos explosivos para el mercado petrolero (exploración sísmica, cañoneo de pozos, perforación, etc.), cubriendo necesidades en el sector Oil & Gas.",
    "Intranet que gestiona noticias, boletines y demás información de interés general para el talento humano de la compañía."
   ],
-  "url": "https://www.hasuedemexico.com/"
+  "url": ""
  }
 ];

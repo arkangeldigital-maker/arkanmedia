@@ -33,8 +33,6 @@
     ['ejemex', 'Ejecutivos Mexicanos'],
   ];
   const clientCard = ([f, n], clone) => `<div class="client"${clone ? ' aria-hidden="true"' : ''}><img src="../assets/clients-t/${f}.png" alt="${clone ? '' : n}" loading="lazy" draggable="false"><span class="client__name">${n}</span></div>`;
-  // los primeros 6 se repiten al final para que el recorrido sea infinito sin saltos visibles
-  $('.logos__track').innerHTML = clients.map(c => clientCard(c)).join('') + clients.slice(0, 6).map(c => clientCard(c, true)).join('');
 
   // ---------- ajuste de textos grandes: si una palabra no cabe, se reduce el tamaño ----------
   const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span, .client__name';
@@ -216,32 +214,44 @@
   });
 
   // ---------- slider de clientes ----------
+  // cada columna lleva 1 logo en escritorio y 2 en celular (dos filas); se recorre por columnas
   (() => {
     const wrap = $('#clients'), vp = $('.logos__viewport', wrap), track = $('.logos__track', wrap), dotsEl = $('.logos__dots', wrap);
-    const N = clients.length;
-    let per = 6, i = 0, timer = null, busy = false;
-    const itemW = () => vp.clientWidth / per;
-    const setX = (anim) => {
+    let per = 6, rows = 0, N = 0, i = 0, timer = null, busy = false;
+    const colW = () => vp.clientWidth / per;
+    const setX = anim => {
       track.style.transition = anim && !reduce ? 'transform .9s cubic-bezier(.65, 0, .35, 1)' : 'none';
-      track.style.transform = `translate3d(${-i * itemW()}px,0,0)`;
+      track.style.transform = `translate3d(${-i * colW()}px,0,0)`;
     };
-    const paintDots = () => { const g = Math.floor((i % N) / per); $$('button', dotsEl).forEach((d, k) => { d.classList.toggle('is-active', k === g); d.setAttribute('aria-selected', k === g); }); };
-    const buildDots = () => {
-      per = parseInt(getComputedStyle(wrap).getPropertyValue('--per')) || 6;
+    const build = () => {
+      const cs = getComputedStyle(wrap);
+      const newPer = parseInt(cs.getPropertyValue('--per')) || 6, newRows = parseInt(cs.getPropertyValue('--rows')) || 1;
+      if (newRows !== rows) {
+        rows = newRows;
+        const cols = [];
+        for (let k = 0; k < clients.length; k += rows) cols.push(clients.slice(k, k + rows));
+        N = cols.length;
+        const col = (c, clone) => `<div class="logos__col">${c.map(x => clientCard(x, clone)).join('')}${c.length < rows ? '<div class="client client--empty" aria-hidden="true"></div>' : ''}</div>`;
+        // las primeras columnas se repiten al final para que el recorrido sea infinito sin saltos
+        track.innerHTML = cols.map(c => col(c)).join('') + cols.slice(0, 6).map(c => col(c, true)).join('');
+        $$('.client__name', track).forEach(fitEl);
+        i = 0;
+      }
+      per = newPer;
       const groups = Math.ceil(N / per);
-      dotsEl.innerHTML = Array.from({ length: groups }, (_, k) => `<button role="tab" aria-label="Logos ${k * per + 1} a ${Math.min(N, (k + 1) * per)}"></button>`).join('');
+      dotsEl.innerHTML = Array.from({ length: groups }, (_, k) => `<button role="tab" aria-label="Grupo ${k + 1} de ${groups}"></button>`).join('');
       $$('button', dotsEl).forEach((d, k) => d.addEventListener('click', () => { go(k * per); restart(); }));
       i = Math.min(i, N - 1); setX(false); paintDots();
     };
+    const paintDots = () => { const g = Math.floor((i % N) / per); $$('button', dotsEl).forEach((d, k) => { d.classList.toggle('is-active', k === g); d.setAttribute('aria-selected', k === g); }); };
     const go = n => {
       if (n < 0) { i += N; setX(false); void track.offsetWidth; n += N; }
       i = Math.min(n, N); setX(true); paintDots();
     };
     track.addEventListener('transitionend', () => { if (i >= N) { i -= N; setX(false); } });
     const restart = () => { clearInterval(timer); if (!reduce) timer = setInterval(() => { if (!busy && !document.hidden) go(i + 1); }, 2400); };
-    wrap.addEventListener('pointerenter', () => { busy = true; });
+    wrap.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') busy = true; });
     wrap.addEventListener('pointerleave', () => { busy = false; });
-    // deslizar con el dedo o arrastrando
     let x0 = null;
     vp.addEventListener('pointerdown', e => { x0 = e.clientX; });
     addEventListener('pointerup', e => {
@@ -249,8 +259,8 @@
       const dx = e.clientX - x0; x0 = null;
       if (Math.abs(dx) > 40) { go(i + (dx < 0 ? per : -per)); restart(); }
     });
-    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildDots, 150); });
-    buildDots(); restart();
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 150); });
+    build(); restart();
   })();
 
   // ---------- manifiesto: separa en palabras ----------

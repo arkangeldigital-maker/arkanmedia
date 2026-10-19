@@ -151,7 +151,9 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
 .word--outline { color: transparent; -webkit-text-stroke: 2px var(--ink); }
 .word--red { color: var(--red); }
 .hero__pill { display: inline-block; width: 1.9em; height: .78em; border-radius: 999px; overflow: hidden; vertical-align: middle; box-shadow: 0 20px 40px -20px rgba(0,0,0,.5); }
-.hero__pill img { width: 100%; height: 100%; object-fit: cover; }
+.hero__pill { position: relative; }
+.hero__pill img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.08); transition: opacity .9s var(--ease), transform 2.6s var(--ease); }
+.hero__pill img.is-on { opacity: 1; transform: scale(1); }
 .hero__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-top: 40px; }
 .hero__lead { max-width: 520px; font-size: clamp(17px, 1.5vw, 21px); line-height: 1.5; margin: 0; }
 .hero__lead strong { color: var(--red); }

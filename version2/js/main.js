@@ -80,6 +80,24 @@
   };
   requestAnimationFrame(paintMask);
 
+  // ---------- miniatura del hero: 5 páginas web al azar que van rotando ----------
+  (() => {
+    const pill = $('.hero__title:not(.hero__title--white) .hero__pill');
+    if (!pill) return;
+    const webs = projects.filter(p => p.cat === 'web');
+    for (let k = webs.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [webs[k], webs[j]] = [webs[j], webs[k]]; }
+    const pick = webs.slice(0, 5);
+    pill.innerHTML = pick.map((p, k) => `<img src="../assets/projects/screens/${p.id}.jpg" alt=""${k ? ' loading="lazy"' : ''}${k ? '' : ' class="is-on"'}>`).join('');
+    const imgs = $$('img', pill);
+    let k = 0;
+    if (!reduce) setInterval(() => {
+      if (document.hidden) return;
+      imgs[k].classList.remove('is-on');
+      k = (k + 1) % imgs.length;
+      imgs[k].classList.add('is-on');
+    }, 2800);
+  })();
+
   // ---------- reloj de Veracruz ----------
   const clock = $('.clock');
   const tick = () => { clock.textContent = new Intl.DateTimeFormat(UI.locale, { hour: '2-digit', minute: '2-digit', timeZone: 'America/Mexico_City' }).format(new Date()); };

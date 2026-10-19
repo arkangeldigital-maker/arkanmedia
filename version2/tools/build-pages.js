@@ -102,7 +102,7 @@ const head = ({ title, titleEn, desc, descEn, url, img, depth }) => `<!doctype h
   <link rel="stylesheet" href="${depth}css/style.css?v=${VER}">
   <link rel="stylesheet" href="${depth}css/sub.css?v=${VER}">
 ${V3 ? `  <link rel="stylesheet" href="${depth}css/dark.css?v=${VER}">
-  <link rel="stylesheet" href="${depth}css/theme-v3.css?v=${VER}">` : ''}catch(e){}</script>'}
+  <link rel="stylesheet" href="${depth}css/theme-v3.css?v=${VER}">` : ''}
 </head>
 <body class="sub">
   <header class="shdr">

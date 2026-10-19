@@ -483,9 +483,12 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
   .steps { grid-template-columns: minmax(0, 1fr); gap: 34px; padding-left: 0; }
   .steps__line { left: 33px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
   .steps__line i { transform-origin: 50% 0; transform: scaleY(0); }
-  .step { display: block; }
-  .step__n { margin: 0 0 16px; }
-  .steps__line { display: none; }
+  .step { display: grid; grid-template-columns: 54px minmax(0, 1fr); column-gap: 16px; align-items: start; }
+  .step__n { grid-row: span 2; width: 54px; height: 54px; margin: 0; }
+  .step__n svg { width: 24px; height: 24px; }
+  .step__n b { right: -10px; top: -8px; min-width: 26px; height: 20px; font-size: 10px; }
+  .step h3 { font-size: 19px; margin: 14px 0 8px; }
+  .steps__line { left: 26px; }
   .faq { grid-template-columns: minmax(0, 1fr); gap: 30px; }
   .faq__head { position: static; }
   .qa__a p { padding-right: 0; font-size: 16px; }

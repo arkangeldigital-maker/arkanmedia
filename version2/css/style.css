@@ -406,8 +406,8 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
 .drawer__body { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding: clamp(20px, 4vw, 44px); }
 .drawer__media .pcard__media { border-radius: 20px; background: var(--ink); }
 .drawer__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 14px; }
-.drawer__tags span { padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--ink); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
-.drawer__tags span:first-child { background: var(--red); border-color: var(--red); color: #fff; }
+.drawer__tags > span { padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--ink); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.drawer__tags > span:first-child { background: var(--red); border-color: var(--red); color: #fff; }
 .drawer h3 { font-size: clamp(40px, 6vw, 76px); text-transform: uppercase; margin-bottom: 22px; }
 .drawer__desc p { font-size: 18px; color: var(--ink-2); }
 .drawer__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }

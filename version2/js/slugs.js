@@ -38,4 +38,4 @@ window.PROJECT_SLUGS = {
  "14801313632": "constructora-zerpa",
  "14801317222": "hasue-de-mexico"
 };
-window.SERVICE_SLUGS = ["paginas-web","apps-moviles","identidad-de-marca","tiendas-en-linea","seo-hosting-sistemas"];
+window.SERVICE_SLUGS = ["paginas-web","identidad-de-marca","tiendas-en-linea","seo-hosting-sistemas"];

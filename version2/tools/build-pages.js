@@ -42,14 +42,6 @@ const SERVICES = [
     match: p => p.cat === 'web',
   },
   {
-    slug: 'apps-moviles', es: 'Apps móviles', en: 'Mobile apps',
-    leadEs: 'Apps para Android e iOS a la medida de tu negocio, amigables y desarrolladas con los estándares actuales para que tus clientes te lleven en el bolsillo.',
-    leadEn: 'Android and iOS apps tailored to your business, friendly and built to current standards so your customers can carry you in their pocket.',
-    incEs: ['Apps para iOS y Android', 'Diseño de experiencia e interfaz', 'Conexión con tu sitio o sistema', 'Notificaciones y funciones a la medida', 'Publicación en App Store y Google Play', 'Soporte y actualizaciones'],
-    incEn: ['iOS and Android apps', 'Experience and interface design', 'Integration with your website or system', 'Notifications and custom features', 'App Store and Google Play publishing', 'Support and updates'],
-    match: () => false, // aún no hay apps en el portafolio
-  },
-  {
     slug: 'identidad-de-marca', es: 'Identidad de marca', en: 'Brand identity',
     leadEs: 'Creamos o renovamos tu identidad: logotipo, colores y aplicaciones para que tu marca se reconozca a la primera y se vea profesional en todos lados.',
     leadEn: 'We create or refresh your identity: logo, colors and applications so your brand is recognized at first sight and looks professional everywhere.',
@@ -75,7 +67,7 @@ const SERVICES = [
   },
 ];
 const serviceFor = p => {
-  const s = SERVICES.filter(sv => sv.match(p) && sv.slug !== 'apps-moviles');
+  const s = SERVICES.filter(sv => sv.match(p));
   return s.length ? s : [SERVICES[0]];
 };
 const CAT = { web: ['Página web', 'Website'], sistemas: ['Sistema', 'Software'], identidad: ['Identidad de marca', 'Brand identity'] };
@@ -125,7 +117,7 @@ const head = ({ title, titleEn, desc, descEn, url, img, depth }) => `<!doctype h
 const foot = depth => `  </main>
   <footer class="foot sfoot">
     <div class="foot__row">
-      <p>© <span class="year"></span> ArkanMedia · ${bi('Diseño web y apps · De Veracruz para el mundo', 'Web design & apps · From Veracruz to the world')}</p>
+      <p>© <span class="year"></span> ArkanMedia · ${bi('Diseño web e identidad · De Veracruz para el mundo', 'Web design & branding · From Veracruz to the world')}</p>
       <a href="${depth}aviso-de-privacidad.html" class="ulink">${bi('Aviso de privacidad', 'Privacy notice')}</a>
       <a href="${depth}" class="ulink">${bi('Volver al inicio', 'Back to home')}</a>
     </div>
@@ -192,7 +184,7 @@ SERVICES.forEach((svc, si) => {
     </section>
 
     <section class="swhy">
-      <div class="swhy__item"><b>+10</b>${bi('años creando sitios, apps e identidades', 'years creating websites, apps and identities')}</div>
+      <div class="swhy__item"><b>+10</b>${bi('años creando sitios web e identidades', 'years creating websites and brand identities')}</div>
       <div class="swhy__item"><b>100%</b>${bi('a la medida, sin plantillas', 'custom-made, no templates')}</div>
       <div class="swhy__item"><b>ES · EN</b>${bi('atendemos clientes en todo el mundo', 'working with clients worldwide')}</div>
     </section>

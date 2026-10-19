@@ -13,12 +13,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/apps-moviles.html</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/apps-moviles.html?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/apps-moviles.html?lang=en"/>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/identidad-de-marca.html</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/identidad-de-marca.html?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/identidad-de-marca.html?lang=en"/>

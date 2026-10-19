@@ -71,7 +71,7 @@ const SERVICES = [
     leadEn: 'We rank you on Google, manage your domain and hosting with 99.9% uptime, and organize your company’s information with custom software.',
     incEs: ['Posicionamiento en Google y Bing', 'Dominio y hosting administrados', 'Certificado de seguridad (https)', 'Sistemas e intranets a la medida', 'Permisos por usuario', 'Respaldo y soporte'],
     incEn: ['Google and Bing rankings', 'Managed domain and hosting', 'Security certificate (https)', 'Custom systems and intranets', 'Per-user permissions', 'Backups and support'],
-    match: p => p.cat === 'sistemas' || ['14801250882', '14801317222'].includes(p.id) || p.id === 'icave',
+    match: p => p.cat === 'sistemas' || ['14801250882', '14801317222'].includes(p.id),
   },
 ];
 const serviceFor = p => {

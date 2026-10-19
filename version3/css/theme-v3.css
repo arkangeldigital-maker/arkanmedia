@@ -1,0 +1,73 @@
+/* Versión 3: diseño de la versión 2 con los colores de la versión 1
+   (azul marino profundo, rojo #d30303, turquesa #2caab3 y azul #2c8cb3). Siempre en modo oscuro. */
+html[data-theme="dark"] {
+  --paper: #12142a;
+  --paper-2: #1a1d38;
+  --ink: #eef0f7;
+  --ink-2: #a3a8bf;
+  --muted: #8b90aa;
+  --line: rgba(255, 255, 255, .1);
+  --deep: #0c0e20;
+  --teal: #2caab3;
+  --blue: #2c8cb3;
+  --grad-text: linear-gradient(100deg, #ff2a1a 0%, #d30303 25%, #8a1206 50%, #d30303 75%, #ff2a1a 100%);
+}
+html[data-theme="dark"] .hdr.is-solid, html[data-theme="dark"] .shdr { background: rgba(18, 20, 42, .82); }
+
+/* brillos de fondo como en la versión 1 */
+.hero { background: radial-gradient(ellipse at 70% 0%, #1e2246 0%, transparent 60%); }
+.hero::before { content: ""; position: absolute; z-index: -2; width: 460px; aspect-ratio: 1; left: -160px; bottom: -200px; border-radius: 50%; background: var(--teal); filter: blur(110px); opacity: .25; pointer-events: none; }
+
+/* etiquetas y acentos en turquesa */
+.tag, .hero__kicker, .eyebrow, .menu__label, .mini__meta small, .info dt, .global__title + .global__text strong { color: var(--teal); }
+.tag::before { background: var(--red); }
+.dot-live { background: var(--teal); box-shadow: 0 0 0 0 rgba(44, 170, 179, .6); }
+.deco--ring, .work__ring { stroke: rgba(44, 170, 179, .45); }
+.deco--dot { background: var(--teal); }
+.hero__orb::after { border-color: rgba(44, 170, 179, .35); }
+.global__globe { stroke: var(--teal); }
+
+/* títulos destacados con el degradado rojo de la versión 1 */
+.big em, .sh2 em, .sh1 em { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; background-size: 200% 100%; animation: shine 6s linear infinite; padding-right: .06em; }
+@keyframes shine { to { background-position: -200% 0; } }
+
+/* íconos en degradado turquesa a azul, como los servicios de la versión 1 */
+.step__n { background: var(--paper-2); border-color: rgba(44, 170, 179, .5); }
+.step.is-on .step__n { background: linear-gradient(135deg, var(--teal), var(--blue)); border-color: transparent; box-shadow: 0 12px 30px -10px rgba(44, 170, 179, .7); }
+.step__n b { background: var(--red); color: #fff; }
+.info__ico { background: linear-gradient(135deg, var(--teal), var(--blue)); }
+.qa.is-open .qa__icon { background: var(--teal); border-color: var(--teal); }
+
+/* tarjetas de servicio: rojo, turquesa-azul y marino */
+.scard--burnt { background: linear-gradient(135deg, var(--teal), var(--blue)); }
+.scard--paper { background: var(--paper-2); border-color: rgba(255, 255, 255, .14); }
+
+/* bloque de presencia global y tarjetas con borde suave */
+.global, .swhy { border-color: rgba(255, 255, 255, .14); }
+.field { border-color: rgba(255, 255, 255, .3); }
+.field:focus-within { border-color: var(--teal); }
+.field:focus-within span { color: var(--teal); }
+.chips span { border-color: rgba(255, 255, 255, .3); }
+.pill:not(.pill--red) { border-color: rgba(255, 255, 255, .35); }
+.pill:not(.pill--red):hover { border-color: var(--teal); background: var(--teal); color: #fff; }
+.hdr__cta:hover, .theme-btn:hover { background: var(--teal); border-color: var(--teal); color: #fff; }
+.lang { border-color: rgba(255, 255, 255, .3); }
+.lang__btn.is-active { background: var(--teal); color: #fff; }
+.client::before { background: var(--teal); }
+.logos__dots button.is-active::before { background: var(--teal); }
+.ulink::after { background: var(--teal); }
+
+/* proyectos: brillo turquesa en lugar de rojo */
+.work__glow { background: radial-gradient(circle, rgba(44, 170, 179, .35), transparent 65%); }
+.pcard__media::before { background: radial-gradient(70% 70% at 50% 120%, var(--teal), transparent 70%); }
+
+/* menú en marino con diagonales rojo y turquesa */
+.menu { background: radial-gradient(120% 80% at 100% 0%, #3a0d1c 0%, #1a1c36 45%, #0d0f22 100%); }
+.menu__links a:hover { color: var(--teal); }
+.menu__links a span, .menu__label { color: var(--teal); }
+
+/* pie: marino con la palabra en degradado */
+.foot { background: var(--deep); border-top: 1px solid var(--line); }
+.foot__word { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; background-size: 200% 100%; animation: shine 8s linear infinite; }
+.foot__word em { color: inherit; }
+.step.is-on .step__n b { background: var(--red); color: #fff; }

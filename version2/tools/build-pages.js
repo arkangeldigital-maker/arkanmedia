@@ -7,7 +7,9 @@ const vm = require('vm');
 
 const V2 = path.join(__dirname, '..');
 const ROOT = path.join(V2, '..');
-const BASE = 'https://arkangeldigital-maker.github.io/arkanmedia/version2/';
+const FOLDER = path.basename(V2); // version2 o version3
+const BASE = `https://arkangeldigital-maker.github.io/arkanmedia/${FOLDER}/`;
+const V3 = FOLDER === 'version3'; // la versión 3 siempre es oscura, con colores de la versión 1
 const VER = process.argv[2] || String(Date.now()).slice(0, 10);
 
 // ---------- datos ----------
@@ -75,7 +77,7 @@ const CAT = { web: ['Página web', 'Website'], sistemas: ['Sistema', 'Software']
 // ---------- piezas comunes ----------
 const ICO_NE = '<i class="ico ico--ne" aria-hidden="true"></i>';
 const head = ({ title, titleEn, desc, descEn, url, img, depth }) => `<!doctype html>
-<html lang="es" data-title-en="${esc(titleEn)}" data-desc-en="${esc(descEn)}">
+<html lang="es"${V3 ? ' data-theme="dark"' : ''} data-title-en="${esc(titleEn)}" data-desc-en="${esc(descEn)}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -99,6 +101,9 @@ const head = ({ title, titleEn, desc, descEn, url, img, depth }) => `<!doctype h
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${depth}css/style.css?v=${VER}">
   <link rel="stylesheet" href="${depth}css/sub.css?v=${VER}">
+  <link rel="stylesheet" href="${depth}css/dark.css?v=${VER}">${V3 ? `
+  <link rel="stylesheet" href="${depth}css/theme-v3.css?v=${VER}">` : ''}
+  ${V3 ? '' : '<script>/* tema antes de pintar */try{var t=localStorage.getItem("arkan-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>'}
 </head>
 <body class="sub">
   <header class="shdr">
@@ -110,6 +115,7 @@ const head = ({ title, titleEn, desc, descEn, url, img, depth }) => `<!doctype h
       <a href="${depth}#contacto">${bi('Contacto', 'Contact')}</a>
     </nav>
     <div class="lang" role="group" aria-label="Idioma / Language"><button class="lang__btn" data-lang="es" lang="es" aria-label="Español">ES</button><button class="lang__btn" data-lang="en" lang="en" aria-label="English">EN</button></div>
+    ${V3 ? '' : `<button class="theme-btn" type="button" aria-label="Cambiar a modo nocturno"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>`}
     <a href="#cotizar" class="hdr__cta shdr__cta">${bi('Cotizar', 'Get a quote')}</a>
   </header>
   <main>
@@ -123,6 +129,7 @@ const foot = depth => `  </main>
     </div>
   </footer>
   <a class="wa" href="https://wa.me/522297819005" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.9 17.8L.2 24l6.4-1.7a11.8 11.8 0 0 0 5.6 1.4 11.8 11.8 0 0 0 8.4-20.1z"/></svg></a>
+  <script src="${depth}js/theme.js?v=${VER}"></script>
   <script src="${depth}js/sub.js?v=${VER}"></script>
 </body>
 </html>
@@ -270,7 +277,7 @@ ${quoteForm(svcs[0], d, p.name)}
 fs.writeFileSync(path.join(V2, 'js/slugs.js'), '// generado por tools/build-pages.js: id de proyecto -> página de detalle\nwindow.PROJECT_SLUGS = ' + JSON.stringify(Object.fromEntries(PROJECTS.map(p => [p.id, p.slug])), null, 1) + ';\nwindow.SERVICE_SLUGS = ' + JSON.stringify(SERVICES.map(s => s.slug)) + ';\n');
 const U = 'https://arkangeldigital-maker.github.io/arkanmedia/';
 const urls = [['version2/', '1.0'], ...SERVICES.map(s => [`version2/servicios/${s.slug}.html`, '0.8']), ...PROJECTS.map(p => [`version2/proyectos/${p.slug}.html`, '0.6']), ['version2/aviso-de-privacidad.html', '0.3'], ['', '0.4']];
-fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+if (!V3) fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls.map(([u, pr]) => `  <url>
     <loc>${U}${u}</loc>${u.startsWith('version2/') && !u.includes('aviso') ? `

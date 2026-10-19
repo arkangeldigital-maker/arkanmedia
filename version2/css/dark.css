@@ -1,0 +1,64 @@
+/* Modo nocturno: se activa con html[data-theme="dark"] (botón de la luna en la cabecera).
+   Las variables cambian de papel claro a fondo oscuro; las piezas con colores fijos se ajustan abajo. */
+html[data-theme="dark"] {
+  --paper: #111220;
+  --paper-2: #1b1c2c;
+  --ink: #f3efe8;
+  --ink-2: #c9c6cf;
+  --muted: #8f8c99;
+  --line: rgba(243, 239, 232, .14);
+  --deep: #0a0b16;
+  color-scheme: dark;
+}
+html[data-theme="dark"] body::before { mix-blend-mode: overlay; opacity: .05; }
+
+/* logo con letras claras */
+html[data-theme="dark"] .hdr__logo img, html[data-theme="dark"] .shdr__logo img { content: url("../../assets/img/logo.png"); }
+html[data-theme="dark"] .hdr.is-solid { background: rgba(17, 18, 32, .82); }
+html[data-theme="dark"] .shdr { background: rgba(17, 18, 32, .86); }
+
+/* bandas que en claro son oscuras: se vuelven aún más profundas para seguir contrastando */
+html[data-theme="dark"] .ticker,
+html[data-theme="dark"] .work,
+html[data-theme="dark"] .scard--ink,
+html[data-theme="dark"] .sinc { background: var(--deep); color: var(--ink); }
+html[data-theme="dark"] .scard--ink { box-shadow: inset 0 0 0 1px var(--line), 0 -20px 40px -30px rgba(0,0,0,.6); }
+html[data-theme="dark"] .work__count b,
+html[data-theme="dark"] .work__arrow { color: var(--ink); }
+html[data-theme="dark"] .work__arrow:hover { background: var(--ink); color: var(--deep); border-color: var(--ink); }
+html[data-theme="dark"] .work__arrow--next:hover { background: #fff; color: var(--red); }
+
+/* logos de clientes: en blanco sobre oscuro; al pasar el mouse, a color sobre una celda clara */
+html[data-theme="dark"] .client img { filter: grayscale(1) invert(1) brightness(1.15); opacity: .65; }
+html[data-theme="dark"] .client:hover { background: #f3efe8; }
+html[data-theme="dark"] .client:hover img { filter: none; opacity: .12; }
+html[data-theme="dark"] .client__name { color: #121320; }
+
+/* botones oscuros pasan a claros con texto oscuro */
+html[data-theme="dark"] .menu-btn { background: var(--ink); color: var(--paper); }
+html[data-theme="dark"] .contact__arrow { background: var(--ink); color: var(--paper); }
+html[data-theme="dark"] .scard--red .scard__link:hover, html[data-theme="dark"] .scard--burnt .scard__link:hover { color: #121320; }
+html[data-theme="dark"] .scard--ink .scard__link:hover { background: var(--ink); color: var(--deep); }
+
+/* pie */
+html[data-theme="dark"] .foot__word em { color: #121320; }
+
+/* botón de tema */
+.theme-btn { flex: none; position: relative; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--ink); background: none; color: var(--ink); cursor: pointer; transition: background .3s, color .3s, transform .5s var(--ease); }
+.theme-btn:hover { background: var(--ink); color: var(--paper); }
+.theme-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.theme-btn .sun { display: none; }
+html[data-theme="dark"] .theme-btn .sun { display: block; }
+html[data-theme="dark"] .theme-btn .moon { display: none; }
+.menu-open .theme-btn { border-color: #fff; color: #fff; }
+/* transición suave al cambiar de tema */
+html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after { transition: background-color .5s, color .5s, border-color .5s, fill .5s, stroke .5s !important; }
+@media (max-width: 760px) { .theme-btn { width: 38px; height: 38px; } .theme-btn svg { width: 17px; height: 17px; } }
+/* celulares chicos: el logo nunca se encoge; el botón de menú queda solo con su ícono */
+.hdr__logo { flex: none; }
+@media (max-width: 400px) {
+  .hdr { gap: 8px; }
+  .hdr__logo img { height: 32px; }
+  .menu-btn { padding: 0 5px; gap: 0; }
+  .menu-btn__txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}

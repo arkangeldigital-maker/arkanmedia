@@ -212,8 +212,13 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
 .steps__line { position: absolute; left: 0; right: 0; top: 34px; height: 2px; background: var(--line); }
 .steps__line i { position: absolute; inset: 0; background: var(--red); transform-origin: 0 50%; transform: scaleX(0); }
 .step { position: relative; }
-.step__n { position: relative; z-index: 1; display: grid; place-items: center; width: 68px; height: 68px; margin-bottom: 26px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--ink); font: 800 20px var(--display); transition: background .5s, color .5s, border-color .5s, transform .5s var(--ease); }
+.step__n { position: relative; z-index: 1; display: grid; place-items: center; width: 68px; height: 68px; margin-bottom: 26px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--ink); color: var(--ink); transition: background .5s, color .5s, border-color .5s, transform .5s var(--ease); }
+.step__n svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.step__n b { position: absolute; right: -8px; top: -6px; min-width: 30px; height: 24px; padding: 0 6px; display: grid; place-items: center; border-radius: 999px; background: var(--ink); color: var(--paper); font: 800 11px/1 var(--display); letter-spacing: .02em; transition: background .5s; }
+.step:hover .step__n svg { animation: wiggle .6s var(--ease); }
+@keyframes wiggle { 30% { transform: rotate(-10deg) scale(1.08); } 60% { transform: rotate(6deg); } }
 .step.is-on .step__n { background: var(--red); border-color: var(--red); color: #fff; transform: scale(1.06); }
+.step.is-on .step__n b { background: var(--ink); }
 .step h3 { font-size: clamp(20px, 1.8vw, 26px); text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 12px; overflow-wrap: normal; }
 .step p { margin: 0; font-size: 15px; color: var(--ink-2); }
 

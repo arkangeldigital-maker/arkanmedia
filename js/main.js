@@ -7,6 +7,9 @@
   // ---------- datos ----------
   const projects = window.PROJECTS || [];
   const clients = [
+    ['casahoms.png', 'CASA HOMS Deutschland'], ['fhsa.svg', 'Fortströer Hernández'],
+    ['hp-icave.svg', 'Hutchison Ports ICAVE'], ['hp-lct.svg', 'Hutchison Ports LCT'], ['hp-eit.svg', 'Hutchison Ports EIT'], ['hp-timsa.svg', 'Hutchison Ports TIMSA'],
+    ['hp-tilh.svg', 'Hutchison Ports TILH'], ['hp-ecv.svg', 'Hutchison Ports ECV'], ['hp-lcmt.svg', 'Hutchison Ports LCMT'], ['hp-tng.svg', 'Hutchison Ports TNG'],
     ['colon', 'Colegio Cristóbal Colón'], ['aaa', 'Asociación de Agentes Aduanales de Veracruz'], ['cmic', 'CMIC'],
     ['carboncito', 'El Carboncito'], ['expediente', 'Blog Expediente'], ['lideres', 'Líderes'],
     ['edifica', 'Edifica Construcciones'], ['prosigo', 'Prosigo'], ['legotec', 'Legotec'],
@@ -28,7 +31,7 @@
         <div class="imac__body"><div class="imac__screen"><img src="assets/projects/screens/${p.id}.jpg" alt="" loading="lazy"></div><div class="imac__chin"></div></div>
         <div class="imac__stand"></div><div class="imac__foot"></div>
       </div>
-      <div class="iphone"><div class="iphone__screen"><span class="iphone__island"></span><img src="assets/projects/screens/${p.id}.jpg" alt="" loading="lazy"></div></div>
+      <div class="iphone"><div class="iphone__screen"><span class="iphone__island"></span><img src="assets/projects/${p.mobile ? 'mobile' : 'screens'}/${p.id}.jpg" alt="" loading="lazy"${p.mobile ? ' class="is-real"' : ''}></div></div>
     </div>`;
   const grid = $('#projects');
   grid.innerHTML = projects.map((p, i) => `
@@ -111,7 +114,7 @@
   // ---------- clientes (dos filas en marquesina) ----------
   const half = Math.ceil(clients.length / 2);
   const row = (list, rev) => {
-    const cards = list.map(([f, n]) => `<div class="logo-card"><img src="assets/clients/${f}.png" alt="${n}" loading="lazy"></div>`).join('');
+    const cards = list.map(([f, n]) => `<div class="logo-card"><img src="assets/clients/${f.includes('.') ? f : f + '.png'}" alt="${n}" loading="lazy"></div>`).join('');
     return `<div class="logos__row${rev ? ' logos__row--rev' : ''}">${cards}${cards.replace(/alt="[^"]*"/g, 'alt="" aria-hidden="true"')}</div>`;
   };
   $('#logos').innerHTML = row(clients.slice(0, half)) + row(clients.slice(half), true);

@@ -13,7 +13,7 @@
   const media = p => `
     <div class="pcard__media">
       <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><b></b></div><img src="../assets/projects/screens/${p.id}.jpg" alt=""></div>
-      <div class="phone"><div class="phone__screen"><img src="../assets/projects/screens/${p.id}.jpg" alt=""></div></div>
+      <div class="phone"><div class="phone__screen"><img src="../assets/projects/${p.mobile ? 'mobile' : 'screens'}/${p.id}.jpg" alt=""${p.mobile ? ' class="is-real"' : ''}></div></div>
     </div>`;
   const pad2 = n => String(n).padStart(2, '0');
   $('#work').innerHTML = projects.map((p, i) => `
@@ -23,6 +23,9 @@
     </article>`).join('');
 
   const clients = [
+    ['casahoms.png', 'CASA HOMS Deutschland'], ['fhsa.svg', 'Fortströer Hernández'],
+    ['hp-icave.svg', 'Hutchison Ports ICAVE'], ['hp-lct.svg', 'Hutchison Ports LCT'], ['hp-eit.svg', 'Hutchison Ports EIT'], ['hp-timsa.svg', 'Hutchison Ports TIMSA'],
+    ['hp-tilh.svg', 'Hutchison Ports TILH'], ['hp-ecv.svg', 'Hutchison Ports ECV'], ['hp-lcmt.svg', 'Hutchison Ports LCMT'], ['hp-tng.svg', 'Hutchison Ports TNG'],
     ['colon', 'Colegio Cristóbal Colón'], ['aaa', 'Agentes Aduanales de Veracruz'], ['cmic', 'CMIC'], ['carboncito', 'El Carboncito'],
     ['expediente', 'Blog Expediente'], ['lideres', 'Líderes'], ['edifica', 'Edifica Construcciones'], ['prosigo', 'Prosigo'],
     ['legotec', 'Legotec'], ['iab', 'Grupo IAB'], ['ipesa', 'IPESA'], ['puertoevento', 'Puerto Evento'],
@@ -33,7 +36,7 @@
     ['moncheri', 'Monchéri'], ['hasue', 'Hasue de México'], ['kidiatras', 'Kidiatras'], ['drraul', 'Dr. Raúl Barragán'],
     ['ejemex', 'Ejecutivos Mexicanos'],
   ];
-  const clientCard = ([f, n], clone) => `<div class="client"${clone ? ' aria-hidden="true"' : ''}><img src="../assets/clients-t/${f}.png" alt="${clone ? '' : n}" loading="lazy" draggable="false"><span class="client__name">${n}</span></div>`;
+  const clientCard = ([f, n], clone) => `<div class="client"${clone ? ' aria-hidden="true"' : ''}><img src="../assets/clients-t/${f.includes('.') ? f : f + '.png'}" alt="${clone ? '' : n}" loading="lazy" draggable="false"><span class="client__name">${n}</span></div>`;
 
   // ---------- ajuste de textos grandes: si una palabra no cabe, se reduce el tamaño ----------
   const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span, .client__name, .global__title';

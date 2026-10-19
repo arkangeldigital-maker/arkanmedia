@@ -402,3 +402,6 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   .cta__actions .btn { flex: 1 1 100%; }
 }
 .pmodal__close .ico { width: 18px; height: 18px; vertical-align: middle; }
+
+/* proyectos con captura real de celular: se ve la parte de arriba, sin recorrido */
+.iphone__screen img.is-real { object-position: 50% 0 !important; animation: none !important; transition: none !important; }

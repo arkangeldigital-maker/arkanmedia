@@ -404,3 +404,6 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
   .manifesto .w { opacity: 1; }
 }
+
+/* proyectos con captura real de celular: se ve la parte de arriba, sin recorrido */
+.phone__screen img.is-real { object-position: 50% 0 !important; animation: none !important; transition: none !important; }

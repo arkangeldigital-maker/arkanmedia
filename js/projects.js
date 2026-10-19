@@ -1,5 +1,125 @@
-// Proyectos tomados de arkanmedia.com (descripción, sector y liga originales)
+// Proyectos de ArkanMedia (descripción y sector). "mobile": true usa una captura real de celular
 window.PROJECTS = [
+ {
+  "id": "casahoms",
+  "cat": "web",
+  "name": "CASA HOMS Deutschland",
+  "sector": "Logística",
+  "desc": [
+   "CASA HOMS ofrece logística portuaria en Veracruz, la conexión estratégica entre Europa y México: carga y descarga de buques, almacenamiento, distribución y despacho aduanal, con servicio puerta a puerta.",
+   "Sitio web en alemán para presentar sus servicios al mercado europeo."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "fhsa",
+  "cat": "web",
+  "name": "Fortströer Hernández",
+  "sector": "Consultoría",
+  "desc": [
+   "Fortströer Hernández (FHSA) representa a empresas industriales entre México y Alemania, con consultoría, estudios de mercado y apoyo operativo, especializada en acero, logística y aduanas.",
+   "Sitio web en inglés para presentar sus servicios a socios internacionales."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "icave",
+  "cat": "web",
+  "name": "Hutchison Ports ICAVE",
+  "sector": "Logística portuaria",
+  "desc": [
+   "Terminal de contenedores de Hutchison Ports en el Puerto de Veracruz, que mueve mercancías con precisión y rapidez.",
+   "Sitio web corporativo de la terminal, con sus servicios, infraestructura, noticias y acceso a las herramientas digitales de Hutchison Ports."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "lct",
+  "cat": "web",
+  "name": "Hutchison Ports LCT",
+  "sector": "Logística portuaria",
+  "desc": [
+   "Terminal de contenedores de Hutchison Ports en Lázaro Cárdenas, Michoacán, con servicio a buques, manejo de carga y transporte.",
+   "Sitio web corporativo de la terminal, con sus servicios, infraestructura, noticias y acceso a las herramientas digitales de Hutchison Ports."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "eit",
+  "cat": "web",
+  "name": "Hutchison Ports EIT",
+  "sector": "Logística portuaria",
+  "desc": [
+   "Terminal de Hutchison Ports en Ensenada, Baja California, con servicio a buques, gestión de carga y transporte hacia y desde la terminal.",
+   "Sitio web corporativo de la terminal, con sus servicios, infraestructura, noticias y acceso a las herramientas digitales de Hutchison Ports."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "timsa",
+  "cat": "web",
+  "name": "Hutchison Ports TIMSA",
+  "sector": "Logística portuaria",
+  "desc": [
+   "Terminal de Hutchison Ports en Manzanillo, Colima, con servicio a buques, manejo de carga contenerizada y carga LCL.",
+   "Sitio web corporativo de la terminal, con sus servicios, infraestructura, noticias y acceso a las herramientas digitales de Hutchison Ports."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "tilh",
+  "cat": "web",
+  "name": "Hutchison Ports TILH",
+  "sector": "Logística portuaria",
+  "desc": [
+   "Terminal intermodal de Hutchison Ports en el centro de México: un nodo que une carretera y ferrocarril, con recepción, almacenamiento y distribución de mercancías.",
+   "Sitio web corporativo de la terminal, con sus servicios, infraestructura, noticias y acceso a las herramientas digitales de Hutchison Ports."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "ecv",
+  "cat": "web",
+  "name": "Hutchison Ports ECV",
+  "sector": "Cruceros",
+  "desc": [
+   "Terminal de cruceros de Hutchison Ports en Ensenada, Baja California, con servicios a cruceros y atención a pasajeros.",
+   "Sitio web corporativo de la terminal, con sus servicios, infraestructura, noticias y acceso a las herramientas digitales de Hutchison Ports."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "lcmt",
+  "cat": "web",
+  "name": "Hutchison Ports LCMT",
+  "sector": "Logística portuaria",
+  "desc": [
+   "Terminal multipropósito de Hutchison Ports en Lázaro Cárdenas: buques de todo tipo, vehículos, maquinaria, carga de proyecto y sobredimensionada, y almacén de 5,000 m².",
+   "Sitio web corporativo de la terminal, con sus servicios, infraestructura, noticias y acceso a las herramientas digitales de Hutchison Ports."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "tng",
+  "cat": "web",
+  "name": "Hutchison Ports TNG",
+  "sector": "Industria naval",
+  "desc": [
+   "Astillero de Hutchison Ports en Veracruz para construcción, reparación, conversión y desguace de embarcaciones.",
+   "Sitio web corporativo de la terminal, con sus servicios, infraestructura, noticias y acceso a las herramientas digitales de Hutchison Ports."
+  ],
+  "url": "",
+  "mobile": true
+ },
  {
   "id": "14801186192",
   "cat": "web",

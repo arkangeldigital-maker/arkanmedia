@@ -1,6 +1,42 @@
 // Proyectos de ArkanMedia (descripción y sector). "mobile": true usa una captura real de celular
 window.PROJECTS = [
  {
+  "id": "patymartes",
+  "cat": "web",
+  "name": "Paty Martes",
+  "sector": "Salud",
+  "desc": [
+   "Paty Martes acompaña a las familias en la nutrición de su bebé con un taller online de alimentación complementaria, libros de cocina y productos para la hora de comer.",
+   "Sitio web con tienda en línea y pagos desde cualquier parte del mundo, además de enlaces a sus otras marcas."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "masagua",
+  "cat": "web",
+  "name": "Grupo MAS",
+  "sector": "Servicios públicos",
+  "desc": [
+   "Grupo MAS presta el servicio de agua y saneamiento en la zona metropolitana de Veracruz.",
+   "Sitio web con avisos a usuarios, oficinas móviles, programas de cultura del agua, pago en línea y chat de atención."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
+  "id": "lda",
+  "cat": "web",
+  "name": "LDA Veracruz",
+  "sector": "Industria",
+  "desc": [
+   "Logística de Desarrollo e Innovación Ambiental de Veracruz ofrece productos y soluciones para seguridad nuclear y salvaguardias, protección radiológica, radioquímica y control y automatización de procesos.",
+   "Sitio web con catálogo de productos, servicios y proveedores, en español e inglés."
+  ],
+  "url": "",
+  "mobile": true
+ },
+ {
   "id": "casahoms",
   "cat": "web",
   "name": "CASA HOMS Deutschland",

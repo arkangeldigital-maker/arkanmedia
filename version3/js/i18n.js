@@ -70,7 +70,7 @@
     's5.t': 'SEO, hosting & software', 's5.p': 'We rank you on Google, manage your domain and hosting with 99.9% uptime, and organize your information with custom software.', 's5.l': '<li>SEO</li><li>Hosting & domain</li><li>Business software</li>',
     'work.bg': 'Projects · Projects ·',
     'work.title': 'Selected <em>work</em>',
-    'work.hint': 'Swipe or use the arrows to see more · click to explore each project',
+    'work.hint': 'Swipe, drag or use the arrows to see more · click to explore each project',
     'work.prev': 'Previous projects', 'work.next': 'More projects', 'work.swipe': 'Swipe',
     'clients.title': 'Brands that <em>trust us</em>',
     'clients.aria': 'Client logos',

@@ -420,6 +420,46 @@
       };
       const onClick = e => go(+e.currentTarget.dataset.dir);
       arrows.forEach(a => a.addEventListener('click', onClick));
+
+      // gesto de deslizar en escritorio: arrastrar con el mouse o deslizar de lado en el trackpad
+      const pin = $('.work__pin');
+      const clampY = y => Math.max(st.start, Math.min(st.end, y));
+      const scrollNow = () => (lenis ? lenis.targetScroll : scrollY);
+      const toY = (y, opts) => lenis ? lenis.scrollTo(clampY(y), opts) : scrollTo({ top: clampY(y), behavior: opts && opts.immediate ? 'auto' : 'smooth' });
+      const onWheel = e => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || !st.isActive) return;
+        e.preventDefault();
+        toY(scrollNow() + e.deltaX * 1.4, { immediate: false, duration: .6 });
+      };
+      pin.addEventListener('wheel', onWheel, { passive: false });
+      let drag = null;
+      const onDown = e => {
+        if (e.pointerType !== 'mouse' || e.button !== 0 || !st.isActive && Math.abs(scrollY - st.start) > 4) return;
+        drag = { x: e.clientX, y0: scrollNow(), last: e.clientX, t: performance.now(), v: 0, moved: false };
+      };
+      const onMove = e => {
+        if (!drag) return;
+        // solo es arrastre si se movió; un clic normal sigue abriendo el proyecto
+        if (!drag.moved) { if (Math.abs(e.clientX - drag.x) < 6) return; drag.moved = true; tr.classList.add('is-grabbing'); }
+        const now = performance.now();
+        drag.v = (e.clientX - drag.last) / Math.max(1, now - drag.t); drag.last = e.clientX; drag.t = now;
+        toY(drag.y0 - (e.clientX - drag.x) * 1.2, { immediate: true });
+      };
+      const onUp = () => {
+        if (!drag) return;
+        if (!drag.moved) { drag = null; return; }
+        // al soltar sigue un poco con la inercia y se acomoda en la tarjeta más cercana
+        const target = scrollNow() - drag.v * 260;
+        const step = cardStep();
+        const snapped = st.start + Math.round((clampY(target) - st.start) / step) * step;
+        toY(snapped, { duration: .9 });
+        drag = null;
+        tr.classList.remove('is-grabbing');
+      };
+      tr.addEventListener('pointerdown', onDown);
+      addEventListener('pointermove', onMove);
+      addEventListener('pointerup', onUp);
+      tr.addEventListener('dragstart', e => e.preventDefault());
       // la palabra del fondo avanza en sentido contrario, más lento
       gsap.to('.work__word', { xPercent: -35, ease: 'none', scrollTrigger: { trigger: '.work', start: 'top top', end: () => '+=' + dist(), scrub: true, invalidateOnRefresh: true } });
       // cada tarjeta se inclina un poco mientras pasa
@@ -427,7 +467,7 @@
         gsap.fromTo($('.pcard__media', card), { rotate: 3, scale: .92 }, { rotate: -3, scale: 1, ease: 'none',
           scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true } });
       });
-      return () => arrows.forEach(a => a.removeEventListener('click', onClick));
+      return () => { arrows.forEach(a => a.removeEventListener('click', onClick)); pin.removeEventListener('wheel', onWheel); tr.removeEventListener('pointerdown', onDown); removeEventListener('pointermove', onMove); removeEventListener('pointerup', onUp); };
     },
     '(max-width: 760px)': () => {
       const tr = $('#work');

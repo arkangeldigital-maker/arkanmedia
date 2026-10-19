@@ -507,3 +507,6 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
 
 /* proyectos con captura real de celular: se ve la parte de arriba, sin recorrido */
 .phone__screen img.is-real { object-position: 50% 0 !important; animation: none !important; transition: none !important; }
+
+/* arrastre con el mouse en el carrusel de proyectos */
+@media (min-width: 761px) and (hover: hover) { .work__track { cursor: grab; user-select: none; } .work__track.is-grabbing { cursor: grabbing; } .work__track.is-grabbing .pcard { pointer-events: none; } .work__track img { -webkit-user-drag: none; } }

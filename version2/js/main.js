@@ -33,8 +33,33 @@
     ['ejemex', 'Ejecutivos Mexicanos'],
   ];
   // 33 logos + una celda de 3 columnas cierra la rejilla en 6, 4 o 3 columnas
-  $('#clients').innerHTML = clients.map(([f, n]) => `<div class="client"><img src="../assets/clients/${f}.png" alt="${n}" loading="lazy"><span class="client__name">${n}</span></div>`).join('') +
-    `<a href="#contacto" class="client client--cta"><span>¿Tu marca aquí?</span><b>↗</b></a>`;
+  $('#clients').innerHTML = clients.map(([f, n]) => `<div class="client"><img src="../assets/clients-t/${f}.png" alt="${n}" loading="lazy"><span class="client__name">${n}</span></div>`).join('') +
+    `<a href="#contacto" class="client client--cta"><span>¿Tu marca aquí?</span><b><i class="ico ico--ne" aria-hidden="true"></i></b></a>`;
+
+  // ---------- ajuste de textos grandes: si una palabra no cabe, se reduce el tamaño ----------
+  const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span';
+  const fitEl = el => {
+    el.style.fontSize = '';
+    const inline = getComputedStyle(el).display.startsWith('inline');
+    // el espacio real es el menor entre el elemento y su contenedor (un hijo de flex puede crecer de más)
+    const content = b => { const cs = getComputedStyle(b), r = b.getBoundingClientRect(); return { l: r.left + parseFloat(cs.paddingLeft) + b.clientLeft, r: r.left + b.clientLeft + b.clientWidth - parseFloat(cs.paddingRight) }; };
+    const a = content(inline ? el.parentElement : el), p = content((inline ? el.parentElement : el).parentElement);
+    const left = Math.max(a.l, p.l);
+    const avail = Math.min(a.r, p.r) - left - (inline ? 40 : 0);
+    if (avail <= 0) return;
+    for (let k = 0; k < 4; k++) {
+      const r = document.createRange(); r.selectNodeContents(el);
+      const right = Math.max(...[...r.getClientRects()].map(x => x.right)) - left;
+      if (right <= avail + .5) break;
+      const fs = parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize = Math.max(12, fs * avail / right * .985) + 'px';
+    }
+  };
+  const fitAll = (root = document) => $$(FIT, root).forEach(fitEl);
+  let fitT;
+  addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => { fitAll(); window.ScrollTrigger?.refresh(); }, 150); });
+  fitAll();
+  document.fonts?.ready.then(() => { fitAll(); window.ScrollTrigger?.refresh(); });
 
   // ---------- reloj de Veracruz ----------
   const clock = $('.clock');
@@ -101,10 +126,11 @@
     $('.drawer__tags', drawer).innerHTML = `<span>${catName[p.cat]}</span><span>${p.sector}</span>`;
     $('#dr-title').textContent = p.name;
     $('.drawer__desc', drawer).innerHTML = p.desc.map(d => `<p>${d}</p>`).join('');
-    $('.drawer__actions', drawer).innerHTML = `<a href="#contacto" class="pill pill--red">Quiero un proyecto así <span>↗</span></a>` +
-      (p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="pill">Ver sitio <span>↗</span></a>` : '');
+    $('.drawer__actions', drawer).innerHTML = `<a href="#contacto" class="pill pill--red">Quiero un proyecto así <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` +
+      (p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="pill">Ver sitio <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` : '');
     $('.drawer__count', drawer).textContent = `${pad2(i + 1)} / ${pad2(projects.length)}`;
     dBody.scrollTop = 0;
+    fitEl($('#dr-title'));
   };
   const openDrawer = i => {
     lastFocus = document.activeElement;
@@ -269,6 +295,11 @@
       return () => tr.removeEventListener('scroll', upd);
     },
   });
+
+  // ---------- proyectos: el bloque oscuro crece de tarjeta a pantalla completa ----------
+  gsap.fromTo('.work', { clipPath: () => `inset(0 ${innerWidth < 761 ? 12 : 32}px round 32px)` },
+    { clipPath: 'inset(0 0px round 0px)', ease: 'none', immediateRender: true,
+      scrollTrigger: { trigger: '.work', start: 'top bottom', end: 'top top', scrub: true, invalidateOnRefresh: true } });
 
   // ---------- clientes: aparecen en cascada ----------
   gsap.from('.client', { opacity: 0, y: 30, duration: .8, ease: 'power3.out', stagger: { each: .03, from: 'random' }, scrollTrigger: { trigger: '.clients__grid', start: 'top 85%' } });

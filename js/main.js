@@ -66,7 +66,7 @@
     $('.pmodal__desc', modal).innerHTML = p.desc.map(d => `<p>${d}</p>`).join('');
     $('.pmodal__actions', modal).innerHTML =
       `<a href="#contacto" class="btn btn--red" data-close>Quiero un proyecto así</a>` +
-      (p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="btn btn--ghost">Ver sitio ↗</a>` : '');
+      (p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="btn btn--ghost">Ver sitio <i class="ico ico--ne" aria-hidden="true"></i></a>` : '');
     $('.pmodal__count', modal).textContent = `${pos + 1} / ${list.length}`;
     // reinicia las animaciones de entrada
     $$('.pmodal__info > *', modal).forEach(el => { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });

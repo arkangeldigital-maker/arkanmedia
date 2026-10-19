@@ -111,7 +111,7 @@
   // ---------- clientes (dos filas en marquesina) ----------
   const half = Math.ceil(clients.length / 2);
   const row = (list, rev) => {
-    const cards = list.map(([f, n]) => `<div class="logo-card"><img src="assets/img/${f}.png" alt="${n}" loading="lazy"></div>`).join('');
+    const cards = list.map(([f, n]) => `<div class="logo-card"><img src="assets/clients/${f}.png" alt="${n}" loading="lazy"></div>`).join('');
     return `<div class="logos__row${rev ? ' logos__row--rev' : ''}">${cards}${cards.replace(/alt="[^"]*"/g, 'alt="" aria-hidden="true"')}</div>`;
   };
   $('#logos').innerHTML = row(clients.slice(0, half)) + row(clients.slice(half), true);

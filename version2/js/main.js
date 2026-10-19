@@ -23,6 +23,7 @@
     </article>`).join('');
 
   const clients = [
+    ['patymartes.svg', 'Paty Martes'], ['masagua.svg', 'Grupo MAS'], ['lda.png', 'LDA Veracruz'],
     ['casahoms.png', 'CASA HOMS Deutschland'], ['fhsa.svg', 'Fortströer Hernández'],
     ['hp-icave.svg', 'Hutchison Ports ICAVE'], ['hp-lct.svg', 'Hutchison Ports LCT'], ['hp-eit.svg', 'Hutchison Ports EIT'], ['hp-timsa.svg', 'Hutchison Ports TIMSA'],
     ['hp-tilh.svg', 'Hutchison Ports TILH'], ['hp-ecv.svg', 'Hutchison Ports ECV'], ['hp-lcmt.svg', 'Hutchison Ports LCMT'], ['hp-tng.svg', 'Hutchison Ports TNG'],

@@ -347,13 +347,33 @@
   });
 
   // ---------- proyectos: scroll horizontal fijado (solo escritorio) ----------
+  // contador y flechas del carrusel de proyectos
+  const arrows = $$('.work__arrow'), countEl = $('.work__count b');
+  $('.work__total').textContent = pad2(projects.length);
+  const setNav = (idx, atStart, atEnd) => {
+    countEl.textContent = pad2(Math.min(projects.length, idx + 1));
+    arrows[0].disabled = atStart; arrows[1].disabled = atEnd;
+  };
+  const cardStep = () => { const c = $$('.pcard'); return c.length > 1 ? c[1].offsetLeft - c[0].offsetLeft : innerWidth; };
+
   ScrollTrigger.matchMedia({
     '(min-width: 761px)': () => {
       const tr = $('#work');
       const dist = () => tr.scrollWidth - innerWidth;
       const tween = gsap.to(tr, { x: () => -dist(), ease: 'none',
         scrollTrigger: { trigger: '.work', pin: '.work__pin', start: 'top top', end: () => '+=' + dist(), scrub: 1, invalidateOnRefresh: true,
-          onUpdate: s => gsap.set('.work__progress span', { scaleX: s.progress }) } });
+          onUpdate: s => { gsap.set('.work__progress span', { scaleX: s.progress }); setNav(Math.round(s.progress * dist() / cardStep()), s.progress < .01, s.progress > .99); } } });
+      const st = tween.scrollTrigger;
+      setNav(0, true, false);
+      // las flechas mueven la página una tarjeta hacia adelante o atrás dentro del recorrido fijado
+      const go = dir => {
+        const cur = Math.round(st.progress * dist() / cardStep());
+        const x = Math.max(0, Math.min(dist(), (cur + dir) * cardStep()));
+        const y = st.start + x;
+        lenis ? lenis.scrollTo(y, { duration: 1 }) : scrollTo({ top: y, behavior: 'smooth' });
+      };
+      const onClick = e => go(+e.currentTarget.dataset.dir);
+      arrows.forEach(a => a.addEventListener('click', onClick));
       // la palabra del fondo avanza en sentido contrario, más lento
       gsap.to('.work__word', { xPercent: -35, ease: 'none', scrollTrigger: { trigger: '.work', start: 'top top', end: () => '+=' + dist(), scrub: true, invalidateOnRefresh: true } });
       // cada tarjeta se inclina un poco mientras pasa
@@ -361,12 +381,23 @@
         gsap.fromTo($('.pcard__media', card), { rotate: 3, scale: .92 }, { rotate: -3, scale: 1, ease: 'none',
           scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true } });
       });
+      return () => arrows.forEach(a => a.removeEventListener('click', onClick));
     },
     '(max-width: 760px)': () => {
       const tr = $('#work');
-      const upd = () => gsap.set('.work__progress span', { scaleX: tr.scrollLeft / Math.max(1, tr.scrollWidth - tr.clientWidth) });
+      const swipe = $('.work__swipe');
+      tr.append(swipe); // queda encima de la primera tarjeta
+      const upd = () => {
+        const max = Math.max(1, tr.scrollWidth - tr.clientWidth);
+        gsap.set('.work__progress span', { scaleX: tr.scrollLeft / max });
+        setNav(Math.round(tr.scrollLeft / cardStep()), tr.scrollLeft < 4, tr.scrollLeft > max - 4);
+        if (tr.scrollLeft > 20) swipe.classList.add('is-gone');
+      };
+      const onClick = e => tr.scrollBy({ left: +e.currentTarget.dataset.dir * cardStep(), behavior: 'smooth' });
+      arrows.forEach(a => a.addEventListener('click', onClick));
       tr.addEventListener('scroll', upd, { passive: true });
-      return () => tr.removeEventListener('scroll', upd);
+      upd();
+      return () => { tr.removeEventListener('scroll', upd); arrows.forEach(a => a.removeEventListener('click', onClick)); };
     },
   });
 

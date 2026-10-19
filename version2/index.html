@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=202610182051">
+  <link rel="stylesheet" href="css/style.css?v=202610182110">
 </head>
 <body class="is-loading">
 
@@ -171,9 +171,15 @@
         <div class="work__head">
           <p class="tag" data-i18n="tag.work">(03) Proyectos</p>
           <h2 class="big" data-i18n="work.title">Trabajo <em>seleccionado</em></h2>
-          <p class="work__hint" data-i18n="work.hint">Desliza para ver más · da clic para conocer cada proyecto</p>
+          <p class="work__hint" data-i18n="work.hint">Desliza o usa las flechas para ver más · da clic para conocer cada proyecto</p>
+          <div class="work__nav">
+            <span class="work__count"><b>01</b> / <span class="work__total">00</span></span>
+            <button class="work__arrow" data-dir="-1" aria-label="Proyectos anteriores" data-i18n-aria="work.prev"><i class="ico ico--left" aria-hidden="true"></i></button>
+            <button class="work__arrow work__arrow--next" data-dir="1" aria-label="Más proyectos" data-i18n-aria="work.next"><i class="ico ico--right" aria-hidden="true"></i></button>
+          </div>
         </div>
         <div class="work__track" id="work"></div>
+        <div class="work__swipe" aria-hidden="true"><span data-i18n="work.swipe">Desliza</span><i class="ico ico--right"></i></div>
         <div class="work__progress" aria-hidden="true"><span></span></div>
       </div>
     </section>
@@ -272,8 +278,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/i18n.js?v=202610182051"></script>
-  <script src="../js/projects.js?v=202610182051"></script>
-  <script src="js/main.js?v=202610182051"></script>
+  <script src="js/i18n.js?v=202610182110"></script>
+  <script src="../js/projects.js?v=202610182110"></script>
+  <script src="js/main.js?v=202610182110"></script>
 </body>
 </html>

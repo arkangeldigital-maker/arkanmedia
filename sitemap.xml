@@ -4,17 +4,266 @@
     <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/?lang=en"/>
-    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/paginas-web.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/paginas-web.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/paginas-web.html?lang=en"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/apps-moviles.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/apps-moviles.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/apps-moviles.html?lang=en"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/identidad-de-marca.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/identidad-de-marca.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/identidad-de-marca.html?lang=en"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/tiendas-en-linea.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/tiendas-en-linea.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/tiendas-en-linea.html?lang=en"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/seo-hosting-sistemas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/seo-hosting-sistemas.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/servicios/seo-hosting-sistemas.html?lang=en"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/paty-martes.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/paty-martes.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/paty-martes.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/grupo-mas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/grupo-mas.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/grupo-mas.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/lda-veracruz.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/lda-veracruz.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/lda-veracruz.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/casa-homs-deutschland.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/casa-homs-deutschland.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/casa-homs-deutschland.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/fortstroer-hernandez.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/fortstroer-hernandez.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/fortstroer-hernandez.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-icave.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-icave.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-icave.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-lct.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-lct.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-lct.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-eit.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-eit.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-eit.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-timsa.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-timsa.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-timsa.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-tilh.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-tilh.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-tilh.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-ecv.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-ecv.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-ecv.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-lcmt.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-lcmt.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-lcmt.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-tng.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-tng.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hutchison-ports-tng.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/colegio-cristobal-colon.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/colegio-cristobal-colon.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/colegio-cristobal-colon.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ejecutivos-mexicanos.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ejecutivos-mexicanos.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ejecutivos-mexicanos.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/american-school-chiapas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/american-school-chiapas.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/american-school-chiapas.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/dipemci.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/dipemci.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/dipemci.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/edifica-construcciones.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/edifica-construcciones.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/edifica-construcciones.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/grupo-halley.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/grupo-halley.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/grupo-halley.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/cecilia-brunette.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/cecilia-brunette.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/cecilia-brunette.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/photobook.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/photobook.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/photobook.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/banquetes-puerto-evento.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/banquetes-puerto-evento.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/banquetes-puerto-evento.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ladeport.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ladeport.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ladeport.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/lideres-mx.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/lideres-mx.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/lideres-mx.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/dr-raul-barragan.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/dr-raul-barragan.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/dr-raul-barragan.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/mezderma.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/mezderma.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/mezderma.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/perfumes-moncheri.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/perfumes-moncheri.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/perfumes-moncheri.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/indegsa.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/indegsa.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/indegsa.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/procovi.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/procovi.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/procovi.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ferrenorte.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ferrenorte.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/ferrenorte.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/soy-geek.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/soy-geek.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/soy-geek.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/asadero-el-carboncito.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/asadero-el-carboncito.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/asadero-el-carboncito.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/proclean-solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/proclean-solutions.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/proclean-solutions.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/procovi-identidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/procovi-identidad.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/procovi-identidad.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/tendsa-group.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/tendsa-group.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/tendsa-group.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/constructora-zerpa.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/constructora-zerpa.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/constructora-zerpa.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hasue-de-mexico.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hasue-de-mexico.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arkangeldigital-maker.github.io/arkanmedia/version2/proyectos/hasue-de-mexico.html?lang=en"/>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://arkangeldigital-maker.github.io/arkanmedia/version2/aviso-de-privacidad.html</loc>
-    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://arkangeldigital-maker.github.io/arkanmedia/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 </urlset>

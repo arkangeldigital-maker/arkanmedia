@@ -199,6 +199,9 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
 .scard__n { font: 800 64px/1 var(--display); letter-spacing: -.04em; opacity: .5; }
 .scard h3 { font-size: clamp(34px, 4.4vw, 68px); text-transform: uppercase; margin-bottom: 20px; }
 .scard p { font-size: 18px; opacity: .85; max-width: 520px; }
+.scard__link { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; padding: 12px 20px; border-radius: 999px; border: 1.5px solid currentColor; font-weight: 700; font-size: 15px; transition: background .3s, color .3s; }
+.scard--ink .scard__link:hover, .scard--red .scard__link:hover, .scard--burnt .scard__link:hover { background: #fff; color: var(--ink); }
+.scard--paper .scard__link:hover { background: var(--ink); color: var(--paper); }
 .scard ul { list-style: none; margin: 0; padding: 0; align-self: end; }
 .scard li { padding: 12px 0; border-bottom: 1px solid currentColor; border-color: rgba(127,127,127,.4); font-weight: 600; display: flex; justify-content: space-between; }
 .scard li::after { content: ""; width: .9em; height: .9em; align-self: center; background: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M8 7h9v9'/%3E%3C/svg%3E"); }
@@ -480,8 +483,9 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
   .steps { grid-template-columns: minmax(0, 1fr); gap: 34px; padding-left: 0; }
   .steps__line { left: 33px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
   .steps__line i { transform-origin: 50% 0; transform: scaleY(0); }
-  .step { display: grid; grid-template-columns: 68px minmax(0, 1fr); column-gap: 20px; }
-  .step__n { grid-row: span 2; margin: 0; }
+  .step { display: block; }
+  .step__n { margin: 0 0 16px; }
+  .steps__line { display: none; }
   .faq { grid-template-columns: minmax(0, 1fr); gap: 30px; }
   .faq__head { position: static; }
   .qa__a p { padding-right: 0; font-size: 16px; }

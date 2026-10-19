@@ -145,7 +145,9 @@
     $('.drawer__tags', drawer).innerHTML = `<span>${catName[p.cat]}</span><span>${p.sector}</span>`;
     $('#dr-title').textContent = p.name;
     $('.drawer__desc', drawer).innerHTML = p.desc.map(d => `<p>${d}</p>`).join('');
-    $('.drawer__actions', drawer).innerHTML = `<a href="#contacto" class="pill pill--red">${UI.want} <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` +
+    const slug = (window.PROJECT_SLUGS || {})[p.id];
+    $('.drawer__actions', drawer).innerHTML = (slug ? `<a href="proyectos/${slug}.html" class="pill pill--red">${UI.detail || 'Ver detalle'} <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` : '') +
+      `<a href="#contacto" class="pill">${UI.want} <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` +
       (p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="pill">Ver sitio <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` : '');
     $('.drawer__count', drawer).textContent = `${pad2(i + 1)} / ${pad2(projects.length)}`;
     dBody.scrollTop = 0;

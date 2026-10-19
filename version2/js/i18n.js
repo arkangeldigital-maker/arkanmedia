@@ -2,6 +2,7 @@
 // Se elige por ?lang=, luego por la última elección guardada y, la primera vez, por el idioma del navegador.
 (() => {
   const EN = {
+    'svc.more': 'View service',
     'm.process': 'Process',
     'm.faq': 'FAQ',
     'tag.process': '(03) Process',
@@ -89,8 +90,8 @@
 
   // textos que arma el JS (detalle, formulario, slider)
   const UI = {
-    es: { cat: { web: 'Página web', sistemas: 'Sistema', identidad: 'Identidad de marca' }, view: 'Ver proyecto', want: 'Quiero un proyecto así', group: 'Grupo', of: 'de', fix: 'Revisa los campos marcados en rojo.', thanks: '¡Gracias! Recibimos tu mensaje y te respondemos muy pronto.', sending: 'Enviando…', fail: 'No se pudo enviar. Inténtalo de nuevo o escríbenos por WhatsApp.', accept: 'Acepta el aviso de privacidad para continuar.', hi: 'Hola ArkanMedia, soy', interest: 'Me interesa', phone: 'Teléfono', subject: 'Cotización desde la web', openMenu: 'Abrir menú', closeMenu: 'Cerrar menú', locale: 'es-MX' },
-    en: { cat: { web: 'Website', sistemas: 'Software', identidad: 'Brand identity' }, view: 'View project', want: 'I want a project like this', group: 'Group', of: 'of', fix: 'Please check the fields marked in red.', thanks: 'Thank you! We got your message and will get back to you very soon.', sending: 'Sending…', fail: 'We couldn’t send it. Please try again or message us on WhatsApp.', accept: 'Please accept the privacy notice to continue.', hi: 'Hi ArkanMedia, my name is', interest: 'I’m interested in', phone: 'Phone', subject: 'Quote request from the website', openMenu: 'Open menu', closeMenu: 'Close menu', locale: 'en-US' },
+    es: { cat: { web: 'Página web', sistemas: 'Sistema', identidad: 'Identidad de marca' }, view: 'Ver proyecto', detail: 'Ver detalle', want: 'Quiero un proyecto así', group: 'Grupo', of: 'de', fix: 'Revisa los campos marcados en rojo.', thanks: '¡Gracias! Recibimos tu mensaje y te respondemos muy pronto.', sending: 'Enviando…', fail: 'No se pudo enviar. Inténtalo de nuevo o escríbenos por WhatsApp.', accept: 'Acepta el aviso de privacidad para continuar.', hi: 'Hola ArkanMedia, soy', interest: 'Me interesa', phone: 'Teléfono', subject: 'Cotización desde la web', openMenu: 'Abrir menú', closeMenu: 'Cerrar menú', locale: 'es-MX' },
+    en: { cat: { web: 'Website', sistemas: 'Software', identidad: 'Brand identity' }, view: 'View project', detail: 'View details', want: 'I want a project like this', group: 'Group', of: 'of', fix: 'Please check the fields marked in red.', thanks: 'Thank you! We got your message and will get back to you very soon.', sending: 'Sending…', fail: 'We couldn’t send it. Please try again or message us on WhatsApp.', accept: 'Please accept the privacy notice to continue.', hi: 'Hi ArkanMedia, my name is', interest: 'I’m interested in', phone: 'Phone', subject: 'Quote request from the website', openMenu: 'Open menu', closeMenu: 'Close menu', locale: 'en-US' },
   };
 
   // proyectos en inglés (nombre igual; sector y descripción traducidos)

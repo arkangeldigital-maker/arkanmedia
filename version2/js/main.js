@@ -5,8 +5,9 @@
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const hasGsap = !!(window.gsap && window.ScrollTrigger) && !reduce;
   const body = document.body;
-  const projects = window.PROJECTS || [];
-  const catName = { web: 'Página web', sistemas: 'Sistema', identidad: 'Identidad corporativa' };
+  const UI = window.UI || { cat: { web: 'Página web', sistemas: 'Sistema', identidad: 'Identidad de marca' }, view: 'Ver proyecto', want: 'Quiero un proyecto así', group: 'Grupo', of: 'de', fix: 'Revisa los campos marcados en rojo.', thanks: '¡Gracias! Te respondemos muy pronto.', hi: 'Hola ArkanMedia, soy', interest: 'Me interesa', phone: 'Teléfono', subject: 'Cotización desde la web', openMenu: 'Abrir menú', closeMenu: 'Cerrar menú', locale: 'es-MX' };
+  const projects = (window.PROJECTS || []).map(p => window.trProject ? window.trProject(p) : p);
+  const catName = UI.cat;
 
   // ---------- datos: proyectos y clientes ----------
   const media = p => `
@@ -16,7 +17,7 @@
     </div>`;
   const pad2 = n => String(n).padStart(2, '0');
   $('#work').innerHTML = projects.map((p, i) => `
-    <article class="pcard" tabindex="0" role="button" data-i="${i}" aria-label="Ver proyecto ${p.name}">
+    <article class="pcard" tabindex="0" role="button" data-i="${i}" aria-label="${UI.view} ${p.name}">
       ${media(p)}
       <div class="pcard__meta"><h3><span class="pcard__n">${pad2(i + 1)}</span>${p.name}</h3><span>${catName[p.cat]} · ${p.sector}</span></div>
     </article>`).join('');
@@ -35,7 +36,7 @@
   const clientCard = ([f, n], clone) => `<div class="client"${clone ? ' aria-hidden="true"' : ''}><img src="../assets/clients-t/${f}.png" alt="${clone ? '' : n}" loading="lazy" draggable="false"><span class="client__name">${n}</span></div>`;
 
   // ---------- ajuste de textos grandes: si una palabra no cabe, se reduce el tamaño ----------
-  const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span, .client__name';
+  const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span, .client__name, .global__title';
   const fitEl = el => {
     el.style.fontSize = '';
     const inline = getComputedStyle(el).display.startsWith('inline');
@@ -77,7 +78,7 @@
 
   // ---------- reloj de Veracruz ----------
   const clock = $('.clock');
-  const tick = () => { clock.textContent = new Intl.DateTimeFormat('es-MX', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Mexico_City' }).format(new Date()); };
+  const tick = () => { clock.textContent = new Intl.DateTimeFormat(UI.locale, { hour: '2-digit', minute: '2-digit', timeZone: 'America/Mexico_City' }).format(new Date()); };
   tick(); setInterval(tick, 20000);
   $('.year').textContent = new Date().getFullYear();
 
@@ -125,7 +126,7 @@
     } else lenis?.start();
     body.classList.toggle('menu-open', open);
     menuBtn.setAttribute('aria-expanded', open);
-    menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    menuBtn.setAttribute('aria-label', open ? UI.closeMenu : UI.openMenu);
     open ? menu.removeAttribute('inert') : menu.setAttribute('inert', '');
   }
   menuBtn.addEventListener('click', () => setMenu(!body.classList.contains('menu-open')));
@@ -140,7 +141,7 @@
     $('.drawer__tags', drawer).innerHTML = `<span>${catName[p.cat]}</span><span>${p.sector}</span>`;
     $('#dr-title').textContent = p.name;
     $('.drawer__desc', drawer).innerHTML = p.desc.map(d => `<p>${d}</p>`).join('');
-    $('.drawer__actions', drawer).innerHTML = `<a href="#contacto" class="pill pill--red">Quiero un proyecto así <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` +
+    $('.drawer__actions', drawer).innerHTML = `<a href="#contacto" class="pill pill--red">${UI.want} <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` +
       (p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="pill">Ver sitio <span><i class="ico ico--ne" aria-hidden="true"></i></span></a>` : '');
     $('.drawer__count', drawer).textContent = `${pad2(i + 1)} / ${pad2(projects.length)}`;
     dBody.scrollTop = 0;
@@ -204,13 +205,13 @@
     e.preventDefault();
     let ok = true;
     $$('input:not([type=checkbox]), textarea', form).forEach(f => { const bad = !f.checkValidity(); f.closest('.field').classList.toggle('is-invalid', bad); if (bad) ok = false; });
-    if (!ok) { note.textContent = 'Revisa los campos marcados en rojo.'; return; }
-    const d = new FormData(form), interes = d.getAll('interes');
-    const text = `Hola ArkanMedia, soy ${d.get('nombre')}.\n\n${d.get('mensaje')}` + (interes.length ? `\n\nMe interesa: ${interes.join(', ')}` : '') + `\n\nEmail: ${d.get('email')}\nTeléfono: ${d.get('telefono')}`;
+    if (!ok) { note.textContent = UI.fix; return; }
+    const d = new FormData(form), interes = $$('.chips input:checked', form).map(c => c.nextElementSibling.textContent.trim());
+    const text = `${UI.hi} ${d.get('nombre')}.\n\n${d.get('mensaje')}` + (interes.length ? `\n\n${UI.interest}: ${interes.join(', ')}` : '') + `\n\nEmail: ${d.get('email')}\n${UI.phone}: ${d.get('telefono')}`;
     const url = via === 'whatsapp' ? `https://wa.me/522297819005?text=${encodeURIComponent(text)}`
-      : `mailto:contacto@arkanmedia.com?subject=${encodeURIComponent('Cotización desde la web')}&body=${encodeURIComponent(text)}`;
+      : `mailto:contacto@arkanmedia.com?subject=${encodeURIComponent(UI.subject)}&body=${encodeURIComponent(text)}`;
     window.open(url, via === 'whatsapp' ? '_blank' : '_self');
-    note.textContent = '¡Gracias! Te respondemos muy pronto.';
+    note.textContent = UI.thanks;
   });
 
   // ---------- slider de clientes ----------
@@ -239,7 +240,7 @@
       }
       per = newPer;
       const groups = Math.ceil(N / per);
-      dotsEl.innerHTML = Array.from({ length: groups }, (_, k) => `<button role="tab" aria-label="Grupo ${k + 1} de ${groups}"></button>`).join('');
+      dotsEl.innerHTML = Array.from({ length: groups }, (_, k) => `<button role="tab" aria-label="${UI.group} ${k + 1} ${UI.of} ${groups}"></button>`).join('');
       $$('button', dotsEl).forEach((d, k) => d.addEventListener('click', () => { go(k * per); restart(); }));
       i = Math.min(i, N - 1); setX(false); paintDots();
     };
@@ -285,10 +286,13 @@
   gsap.set('.split-up', { y: 30, opacity: 0 });
   gsap.set('.badge', { scale: 0, rotate: -90 });
   gsap.set('.hero__orb', { scale: .3, opacity: 0 });
+  let skipLoader = false;
+  try { skipLoader = sessionStorage.getItem('arkan-skip-loader') === '1'; sessionStorage.removeItem('arkan-skip-loader'); } catch (e) { /* sin almacenamiento */ }
+  if (skipLoader) gsap.set('.loader', { display: 'none' });
   const counter = { v: 0 };
   const intro = gsap.timeline();
-  intro.to(counter, { v: 100, duration: 1.4, ease: 'power2.inOut', onUpdate: () => { $('.loader__count span').textContent = Math.round(counter.v); } })
-    .to('.loader', { clipPath: 'inset(0 0 100% 0)', duration: 1, ease: 'expo.inOut' })
+  intro.to(counter, { v: 100, duration: skipLoader ? 0 : 1.4, ease: 'power2.inOut', onUpdate: () => { $('.loader__count span').textContent = Math.round(counter.v); } })
+    .to('.loader', { clipPath: 'inset(0 0 100% 0)', duration: skipLoader ? 0 : 1, ease: 'expo.inOut' })
     .add(() => { $('.loader').remove(); body.classList.remove('is-loading'); }, '-=.3')
     .to('.hero__orb', { scale: 1, opacity: 1, duration: 1.6, ease: 'expo.out' }, '-=.6')
     .to(lines, { yPercent: 0, duration: 1.2, ease: 'expo.out', stagger: .08 }, '<')

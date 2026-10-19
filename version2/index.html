@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ArkanMedia | Estudio digital en Veracruz</title>
-  <meta name="description" content="ArkanMedia: diseño de páginas web, apps móviles, imagen corporativa, SEO y sistemas a la medida. Puerto de Veracruz, México.">
+  <title data-i18n="meta.title">ArkanMedia | Estudio digital en Veracruz</title>
+  <meta name="description" content="ArkanMedia: diseño de páginas web, apps móviles, identidad de marca, SEO y sistemas a la medida. Desde Veracruz, México, para clientes en todo el mundo." data-i18n-content="meta.desc">
   <meta name="theme-color" content="#f3efe8">
   <link rel="icon" href="../assets/img/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=202610181933">
+  <link rel="stylesheet" href="css/style.css?v=202610181946">
 </head>
 <body class="is-loading">
 
@@ -20,15 +20,18 @@
     <div class="loader__word">arkan<em>media</em></div>
   </div>
 
-  <div class="cursor" aria-hidden="true"><span class="cursor__label">Ver</span></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__label" data-i18n="cursor">Ver</span></div>
 
   <!-- cabecera -->
   <header class="hdr">
     <a href="#top" class="hdr__logo"><img src="assets/logo-dark.png" alt="ArkanMedia" width="173" height="53"></a>
-    <p class="hdr__meta"><span class="dot-live"></span>Veracruz, MX · <time class="clock">--:--</time></p>
-    <a href="#contacto" class="hdr__cta">Cotizar</a>
+    <p class="hdr__meta"><span class="dot-live"></span>Veracruz, MX · <time class="clock">--:--</time><span class="hdr__world">&nbsp;·&nbsp;<span data-i18n="hdr.world">Para todo el mundo</span></span></p>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button class="lang__btn" data-lang="es" lang="es" aria-label="Español">ES</button><button class="lang__btn" data-lang="en" lang="en" aria-label="English">EN</button>
+    </div>
+    <a href="#contacto" class="hdr__cta" data-i18n="nav.quote">Cotizar</a>
     <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
-      <span class="menu-btn__txt"><span>Menú</span><span>Cerrar</span></span>
+      <span class="menu-btn__txt"><span data-i18n="nav.menu">Menú</span><span data-i18n="nav.close">Cerrar</span></span>
       <span class="menu-btn__icon"><i></i><i></i></span>
     </button>
   </header>
@@ -37,15 +40,15 @@
   <nav class="menu" id="menu" aria-label="Menú" inert data-lenis-prevent>
     <div class="menu__in">
       <ol class="menu__links">
-        <li style="--i:0"><a href="#top"><span>01</span>Inicio</a></li>
-        <li style="--i:1"><a href="#estudio"><span>02</span>Estudio</a></li>
-        <li style="--i:2"><a href="#servicios"><span>03</span>Servicios</a></li>
-        <li style="--i:3"><a href="#proyectos"><span>04</span>Proyectos</a></li>
-        <li style="--i:4"><a href="#clientes"><span>05</span>Clientes</a></li>
-        <li style="--i:5"><a href="#contacto"><span>06</span>Contacto</a></li>
+        <li style="--i:0"><a href="#top"><span>01</span><b data-i18n="m.home">Inicio</b></a></li>
+        <li style="--i:1"><a href="#estudio"><span>02</span><b data-i18n="m.studio">Estudio</b></a></li>
+        <li style="--i:2"><a href="#servicios"><span>03</span><b data-i18n="m.services">Servicios</b></a></li>
+        <li style="--i:3"><a href="#proyectos"><span>04</span><b data-i18n="m.work">Proyectos</b></a></li>
+        <li style="--i:4"><a href="#clientes"><span>05</span><b data-i18n="m.clients">Clientes</b></a></li>
+        <li style="--i:5"><a href="#contacto"><span>06</span><b data-i18n="m.contact">Contacto</b></a></li>
       </ol>
       <div class="menu__side">
-        <p class="menu__label">Escríbenos</p>
+        <p class="menu__label" data-i18n="m.write">Escríbenos</p>
         <a href="mailto:contacto@arkanmedia.com">contacto@arkanmedia.com</a>
         <a href="tel:+522297819005">(229) 781 90 05</a>
         <a href="https://wa.me/522297819005" target="_blank" rel="noopener">WhatsApp <i class="ico ico--ne" aria-hidden="true"></i></a>
@@ -58,26 +61,26 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero__orb" aria-hidden="true"></div>
-      <p class="hero__kicker split-up">Estudio digital · Desde el Puerto de Veracruz · +10 años</p>
+      <p class="hero__kicker split-up" data-i18n="hero.kicker">Estudio digital · De Veracruz para el mundo · +10 años</p>
       <div class="hero__type">
-        <h1 class="hero__title" aria-label="Ideas que se ven y que venden">
-        <span class="line"><span class="word">Ideas</span> <span class="word word--outline">que</span></span>
-        <span class="line line--indent"><span class="word">se&nbsp;ven</span> <span class="hero__pill" aria-hidden="true"><img src="../assets/projects/screens/14801199212.jpg" alt=""></span></span>
-        <span class="line"><span class="word word--red">&amp;</span> <span class="word word--red">venden.</span></span>
+        <h1 class="hero__title" aria-label="Ideas que se ven y que venden" data-i18n-aria="hero.aria">
+        <span class="line"><span class="word" data-i18n="hero.w1">Ideas</span> <span class="word word--outline" data-i18n="hero.w2">que</span></span>
+        <span class="line line--indent"><span class="word" data-i18n="hero.w3">se&nbsp;ven</span> <span class="hero__pill" aria-hidden="true"><img src="../assets/projects/screens/14801199212.jpg" alt=""></span></span>
+        <span class="line"><span class="word word--red">&amp;</span> <span class="word word--red" data-i18n="hero.w4">venden.</span></span>
       </h1>
         <!-- copia en blanco: solo se ve dentro del círculo rojo -->
               <div class="hero__title hero__title--white" aria-hidden="true">
-        <span class="line"><span class="word">Ideas</span> <span class="word word--outline">que</span></span>
-        <span class="line line--indent"><span class="word">se&nbsp;ven</span> <span class="hero__pill" aria-hidden="true"><img src="../assets/projects/screens/14801199212.jpg" alt=""></span></span>
-        <span class="line"><span class="word word--red">&amp;</span> <span class="word word--red">venden.</span></span>
+        <span class="line"><span class="word" data-i18n="hero.w1">Ideas</span> <span class="word word--outline" data-i18n="hero.w2">que</span></span>
+        <span class="line line--indent"><span class="word" data-i18n="hero.w3">se&nbsp;ven</span> <span class="hero__pill" aria-hidden="true"><img src="../assets/projects/screens/14801199212.jpg" alt=""></span></span>
+        <span class="line"><span class="word word--red">&amp;</span> <span class="word word--red" data-i18n="hero.w4">venden.</span></span>
       </div>
       </div>
-      <p class="hero__coords" aria-hidden="true">19.1738° N<br>96.1342° O</p>
+      <p class="hero__coords" aria-hidden="true" data-i18n="hero.coords">19.1738° N<br>96.1342° O</p>
       <div class="hero__scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
       <div class="hero__foot">
-        <p class="hero__lead split-up">Diseñamos páginas web, apps e identidades <strong>100% a la medida</strong>. Sin plantillas, sin copiar a nadie: tu marca, contada como se merece.</p>
-        <a href="#contacto" class="badge" aria-label="Cotiza tu proyecto">
-          <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#circ">Cotiza tu proyecto · Cotiza tu proyecto · </textPath></text></svg>
+        <p class="hero__lead split-up" data-i18n="hero.lead">Diseñamos páginas web, apps e identidades <strong>100% a la medida</strong> para marcas en México y en todo el mundo. Sin plantillas, sin copiar a nadie: tu marca, contada como se merece.</p>
+        <a href="#contacto" class="badge" aria-label="Cotiza tu proyecto" data-i18n-aria="badge">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#circ" data-i18n="badge.txt">Cotiza tu proyecto · Cotiza tu proyecto · </textPath></text></svg>
           <span class="badge__arrow"><i class="ico ico--se" aria-hidden="true"></i></span>
         </a>
       </div>
@@ -85,9 +88,9 @@
 
     <!-- CINTA -->
     <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <span>Páginas web</span><i class="ico ico--spark" aria-hidden="true"></i><span>Apps iOS & Android</span><i class="ico ico--spark" aria-hidden="true"></i><span>Imagen corporativa</span><i class="ico ico--spark" aria-hidden="true"></i><span>SEO</span><i class="ico ico--spark" aria-hidden="true"></i><span>Tiendas en línea</span><i class="ico ico--spark" aria-hidden="true"></i><span>Sistemas a la medida</span><i class="ico ico--spark" aria-hidden="true"></i>
-        <span>Páginas web</span><i class="ico ico--spark" aria-hidden="true"></i><span>Apps iOS & Android</span><i class="ico ico--spark" aria-hidden="true"></i><span>Imagen corporativa</span><i class="ico ico--spark" aria-hidden="true"></i><span>SEO</span><i class="ico ico--spark" aria-hidden="true"></i><span>Tiendas en línea</span><i class="ico ico--spark" aria-hidden="true"></i><span>Sistemas a la medida</span><i class="ico ico--spark" aria-hidden="true"></i>
+      <div class="ticker__track" data-i18n="ticker">
+        <span>Páginas web</span><i class="ico ico--spark" aria-hidden="true"></i><span>Apps iOS & Android</span><i class="ico ico--spark" aria-hidden="true"></i><span>Identidad de marca</span><i class="ico ico--spark" aria-hidden="true"></i><span>SEO</span><i class="ico ico--spark" aria-hidden="true"></i><span>Tiendas en línea</span><i class="ico ico--spark" aria-hidden="true"></i><span>Presencia global</span><i class="ico ico--spark" aria-hidden="true"></i>
+        <span>Páginas web</span><i class="ico ico--spark" aria-hidden="true"></i><span>Apps iOS & Android</span><i class="ico ico--spark" aria-hidden="true"></i><span>Identidad de marca</span><i class="ico ico--spark" aria-hidden="true"></i><span>SEO</span><i class="ico ico--spark" aria-hidden="true"></i><span>Tiendas en línea</span><i class="ico ico--spark" aria-hidden="true"></i><span>Presencia global</span><i class="ico ico--spark" aria-hidden="true"></i>
       </div>
     </div>
 
@@ -97,49 +100,62 @@
       <span class="deco deco--plus" data-speed=".2" aria-hidden="true" style="right:5%;top:3%"></span>
       <span class="deco deco--plus" data-speed="-.25" aria-hidden="true" style="right:12%;bottom:22%"></span>
       <span class="deco deco--dot" data-speed=".35" aria-hidden="true" style="left:46%;top:6%"></span>
-      <p class="tag">(01) Estudio</p>
-      <p class="manifesto">ArkanMedia nació para que cualquier empresa, de cualquier tamaño, tenga una presencia digital a la altura. Diseñamos, programamos y cuidamos cada detalle desde Veracruz, como una extensión de tu equipo.</p>
+      <p class="tag" data-i18n="tag.studio">(01) Estudio</p>
+      <p class="manifesto" data-i18n="manifesto">ArkanMedia nació para que cualquier empresa, de cualquier tamaño, tenga una presencia digital a la altura. Desde Veracruz diseñamos, programamos y cuidamos cada detalle para marcas en todo el mundo, como una extensión de tu equipo.</p>
       <div class="numbers">
-        <div class="num"><strong data-count="10">0</strong><sup>+</sup><span>años creando</span></div>
-        <div class="num"><strong data-count="24">0</strong><sup>+</sup><span>proyectos lanzados</span></div>
-        <div class="num"><strong data-count="33">0</strong><sup>+</sup><span>clientes felices</span></div>
-        <div class="num"><strong data-count="100">0</strong><sup>%</sup><span>a la medida</span></div>
+        <div class="num"><strong data-count="10">0</strong><sup>+</sup><span data-i18n="n1">años creando</span></div>
+        <div class="num"><strong data-count="24">0</strong><sup>+</sup><span data-i18n="n2">proyectos lanzados</span></div>
+        <div class="num"><strong data-count="33">0</strong><sup>+</sup><span data-i18n="n3">clientes felices</span></div>
+        <div class="num"><strong data-count="100">0</strong><sup>%</sup><span data-i18n="n4">a la medida</span></div>
+      </div>
+      <div class="global">
+        <svg class="global__globe" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="54"/>
+          <ellipse class="global__meridian" cx="60" cy="60" rx="20" ry="54"/>
+          <ellipse class="global__meridian global__meridian--2" cx="60" cy="60" rx="40" ry="54"/>
+          <path d="M6 60h108M14 33h92M14 87h92"/>
+          <circle class="global__pin" cx="44" cy="52" r="4"/>
+        </svg>
+        <div>
+          <p class="global__title" data-i18n="global.title">Presencia digital en todo el mundo</p>
+          <p class="global__text" data-i18n="global.text">Trabajamos a distancia con empresas de México y de cualquier país, en español y en inglés. Tu sitio, listo para clientes en cualquier parte del mundo.</p>
+        </div>
       </div>
     </section>
 
     <!-- SERVICIOS: tarjetas que se apilan -->
     <section class="services" id="servicios">
       <div class="services__head">
-        <p class="tag">(02) Servicios</p>
+        <p class="tag" data-i18n="tag.services">(02) Servicios</p>
         <span class="deco deco--plus" data-speed=".3" aria-hidden="true" style="right:8%;top:30px"></span>
         <span class="deco deco--dot" data-speed="-.2" aria-hidden="true" style="right:24%;top:120px"></span>
-        <h2 class="big">Lo que <em>hacemos</em></h2>
+        <h2 class="big" data-i18n="services.title">Lo que <em>hacemos</em></h2>
       </div>
       <div class="stack">
         <article class="scard scard--ink" style="--n:0">
           <span class="scard__n">01</span>
-          <div><h3>Diseño de páginas web</h3><p>Sitios que hablan a tus clientes de forma clara y efectiva: diseño, usabilidad y accesibilidad, a la imagen de tu empresa.</p></div>
-          <ul><li>Sitios corporativos</li><li>Landing pages</li><li>Panel administrable</li></ul>
+          <div><h3 data-i18n="s1.t">Diseño de páginas web</h3><p data-i18n="s1.p">Sitios que hablan a tus clientes de forma clara y efectiva: diseño, usabilidad y accesibilidad, a la imagen de tu empresa.</p></div>
+          <ul data-i18n="s1.l"><li>Sitios corporativos</li><li>Landing pages</li><li>Panel administrable</li></ul>
         </article>
         <article class="scard scard--red" style="--n:1">
           <span class="scard__n">02</span>
-          <div><h3>Apps móviles</h3><p>Apps para Android e iOS a la medida de tu negocio, amigables y con los estándares actuales de desarrollo.</p></div>
-          <ul><li>iOS</li><li>Android</li><li>Apps híbridas</li></ul>
+          <div><h3 data-i18n="s2.t">Apps móviles</h3><p data-i18n="s2.p">Apps para Android e iOS a la medida de tu negocio, amigables y con los estándares actuales de desarrollo.</p></div>
+          <ul data-i18n="s2.l"><li>iOS</li><li>Android</li><li>Apps híbridas</li></ul>
         </article>
         <article class="scard scard--paper" style="--n:2">
           <span class="scard__n">03</span>
-          <div><h3>Identidad de marca</h3><p>Creamos o renovamos tu identidad: logotipo, colores y aplicaciones para que tu marca se reconozca a la primera.</p></div>
-          <ul><li>Logotipo</li><li>Manual de marca</li><li>Papelería</li></ul>
+          <div><h3 data-i18n="s3.t">Identidad de marca</h3><p data-i18n="s3.p">Creamos o renovamos tu identidad: logotipo, colores y aplicaciones para que tu marca se reconozca a la primera.</p></div>
+          <ul data-i18n="s3.l"><li>Logotipo</li><li>Manual de marca</li><li>Papelería</li></ul>
         </article>
         <article class="scard scard--burnt" style="--n:3">
           <span class="scard__n">04</span>
-          <div><h3>Tiendas y pagos en línea</h3><p>Carrito de compras, pedidos directo a tu correo y cobro con tarjeta de crédito o en OXXO.</p></div>
-          <ul><li>Punto de venta</li><li>Pagos online</li><li>Chat con clientes</li></ul>
+          <div><h3 data-i18n="s4.t">Tiendas y pagos en línea</h3><p data-i18n="s4.p">Carrito de compras, pedidos directo a tu correo y cobro con tarjeta de crédito o en OXXO.</p></div>
+          <ul data-i18n="s4.l"><li>Punto de venta</li><li>Pagos online</li><li>Chat con clientes</li></ul>
         </article>
         <article class="scard scard--ink" style="--n:4">
           <span class="scard__n">05</span>
-          <div><h3>SEO, hosting y sistemas</h3><p>Te posicionamos en Google, gestionamos dominio y hosting con 99.9% de disponibilidad, y ordenamos tu información con sistemas a la medida.</p></div>
-          <ul><li>SEO</li><li>Hosting & dominio</li><li>Sistemas informáticos</li></ul>
+          <div><h3 data-i18n="s5.t">SEO, hosting y sistemas</h3><p data-i18n="s5.p">Te posicionamos en Google, gestionamos dominio y hosting con 99.9% de disponibilidad, y ordenamos tu información con sistemas a la medida.</p></div>
+          <ul data-i18n="s5.l"><li>SEO</li><li>Hosting & dominio</li><li>Sistemas informáticos</li></ul>
         </article>
       </div>
     </section>
@@ -148,14 +164,14 @@
     <section class="work" id="proyectos">
       <div class="work__pin">
         <div class="work__bg" aria-hidden="true">
-          <span class="work__word">Proyectos · Proyectos ·</span>
+          <span class="work__word" data-i18n="work.bg">Proyectos · Proyectos ·</span>
           <span class="work__glow"></span>
           <svg class="work__ring" viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" /></svg>
         </div>
         <div class="work__head">
-          <p class="tag">(03) Proyectos</p>
-          <h2 class="big">Trabajo <em>seleccionado</em></h2>
-          <p class="work__hint">Desliza para ver más · da clic para conocer cada proyecto</p>
+          <p class="tag" data-i18n="tag.work">(03) Proyectos</p>
+          <h2 class="big" data-i18n="work.title">Trabajo <em>seleccionado</em></h2>
+          <p class="work__hint" data-i18n="work.hint">Desliza para ver más · da clic para conocer cada proyecto</p>
         </div>
         <div class="work__track" id="work"></div>
         <div class="work__progress" aria-hidden="true"><span></span></div>
@@ -165,16 +181,16 @@
     <!-- CLIENTES -->
     <section class="clients" id="clientes">
       <div class="clients__head">
-        <p class="tag">(04) Clientes</p>
+        <p class="tag" data-i18n="tag.clients">(04) Clientes</p>
         <svg class="deco deco--ring" data-speed=".12" viewBox="0 0 200 200" aria-hidden="true" style="width:clamp(140px,16vw,240px);right:4%;top:-40px"><circle cx="100" cy="100" r="96"/></svg>
         <span class="deco deco--plus" data-speed="-.3" aria-hidden="true" style="left:52%;top:20px"></span>
-        <h2 class="big">Marcas que <em>confían</em></h2>
+        <h2 class="big" data-i18n="clients.title">Marcas que <em>confían</em></h2>
       </div>
-      <div class="logos" id="clients" aria-roledescription="carrusel" aria-label="Logos de clientes">
+      <div class="logos" id="clients" aria-roledescription="carrusel" aria-label="Logos de clientes" data-i18n-aria="clients.aria">
         <div class="logos__viewport"><div class="logos__track"></div></div>
         <div class="logos__ui">
           <div class="logos__dots" role="tablist" aria-label="Elegir grupo de logos"></div>
-          <a href="#contacto" class="logos__cta">¿Tu marca aquí? Hablemos <i class="ico ico--ne" aria-hidden="true"></i></a>
+          <a href="#contacto" class="logos__cta"><span data-i18n="clients.cta">¿Tu marca aquí? Hablemos</span> <i class="ico ico--ne" aria-hidden="true"></i></a>
         </div>
       </div>
     </section>
@@ -184,34 +200,34 @@
       <svg class="deco deco--ring" data-speed="-.1" viewBox="0 0 200 200" aria-hidden="true" style="width:clamp(260px,34vw,560px);right:-10vw;top:4%"><circle cx="100" cy="100" r="96"/></svg>
       <span class="deco deco--plus" data-speed=".25" aria-hidden="true" style="left:3%;bottom:18%"></span>
       <span class="deco deco--dot" data-speed="-.3" aria-hidden="true" style="right:30%;top:10%"></span>
-      <p class="tag">(05) Contacto</p>
-      <a href="https://wa.me/522297819005" target="_blank" rel="noopener" class="contact__big" aria-label="Escríbenos por WhatsApp">
-        <span class="contact__row">¿Hablamos</span><span class="contact__row">de tu <span class="nw">proyecto?<span class="contact__arrow"><i class="ico ico--ne" aria-hidden="true"></i></span></span></span>
+      <p class="tag" data-i18n="tag.contact">(05) Contacto</p>
+      <a href="https://wa.me/522297819005" target="_blank" rel="noopener" class="contact__big" aria-label="Escríbenos por WhatsApp" data-i18n-aria="contact.aria">
+        <span class="contact__row" data-i18n="contact.r1">¿Hablamos</span><span class="contact__row"><span data-i18n="contact.r2">de tu</span> <span class="nw"><span data-i18n="contact.r3">proyecto?</span><span class="contact__arrow"><i class="ico ico--ne" aria-hidden="true"></i></span></span></span>
       </a>
       <div class="contact__grid">
         <div class="contact__info">
-          <p>Cuéntanos qué necesitas y te preparamos una propuesta a la medida.</p>
+          <p data-i18n="contact.lead">Cuéntanos qué necesitas y te preparamos una propuesta a la medida, estés donde estés.</p>
           <a href="mailto:contacto@arkanmedia.com" class="ulink">contacto@arkanmedia.com</a>
           <a href="tel:+522297819005" class="ulink">(229) 781 90 05</a>
-          <p class="muted">Lun a Vie 9am a 7pm · Sáb 9am a 2pm<br>Veracruz, Ver. México</p>
+          <p class="muted" data-i18n="contact.hours">Lun a Vie 9am a 7pm · Sáb 9am a 2pm (hora del centro de México)<br>Veracruz, México · Atendemos proyectos en todo el mundo</p>
         </div>
         <form class="form" id="form" novalidate>
-          <label class="field"><span>¿Cómo te llamas?</span><input name="nombre" required autocomplete="name"></label>
-          <label class="field"><span>Tu correo</span><input name="email" type="email" required autocomplete="email"></label>
-          <label class="field"><span>Tu teléfono</span><input name="telefono" type="tel" required autocomplete="tel"></label>
+          <label class="field"><span data-i18n="f.name">¿Cómo te llamas?</span><input name="nombre" required autocomplete="name"></label>
+          <label class="field"><span data-i18n="f.email">Tu correo</span><input name="email" type="email" required autocomplete="email"></label>
+          <label class="field"><span data-i18n="f.phone">Tu teléfono</span><input name="telefono" type="tel" required autocomplete="tel"></label>
           <fieldset class="chips">
-            <legend>Me interesa</legend>
-            <label><input type="checkbox" name="interes" value="Página web"><span>Página web</span></label>
-            <label><input type="checkbox" name="interes" value="App móvil"><span>App móvil</span></label>
-            <label><input type="checkbox" name="interes" value="Imagen corporativa"><span>Imagen corporativa</span></label>
-            <label><input type="checkbox" name="interes" value="Tienda en línea"><span>Tienda en línea</span></label>
-            <label><input type="checkbox" name="interes" value="SEO"><span>SEO</span></label>
-            <label><input type="checkbox" name="interes" value="Sistema"><span>Sistema</span></label>
+            <legend data-i18n="f.interest">Me interesa</legend>
+            <label><input type="checkbox" name="interes" value="Página web"><span data-i18n="f.c1">Página web</span></label>
+            <label><input type="checkbox" name="interes" value="App móvil"><span data-i18n="f.c2">App móvil</span></label>
+            <label><input type="checkbox" name="interes" value="Imagen corporativa"><span data-i18n="f.c3">Identidad de marca</span></label>
+            <label><input type="checkbox" name="interes" value="Tienda en línea"><span data-i18n="f.c4">Tienda en línea</span></label>
+            <label><input type="checkbox" name="interes" value="SEO"><span data-i18n="f.c5">SEO</span></label>
+            <label><input type="checkbox" name="interes" value="Sistema"><span data-i18n="f.c6">Sistema</span></label>
           </fieldset>
-          <label class="field"><span>Cuéntanos tu idea</span><textarea name="mensaje" rows="3" required></textarea></label>
+          <label class="field"><span data-i18n="f.msg">Cuéntanos tu idea</span><textarea name="mensaje" rows="3" required></textarea></label>
           <div class="form__actions">
-            <button class="pill pill--red" data-via="whatsapp">Enviar por WhatsApp <span><i class="ico ico--ne" aria-hidden="true"></i></span></button>
-            <button class="pill" data-via="email">Enviar por correo <span><i class="ico ico--ne" aria-hidden="true"></i></span></button>
+            <button class="pill pill--red" data-via="whatsapp"><b data-i18n="f.wa">Enviar por WhatsApp</b> <span><i class="ico ico--ne" aria-hidden="true"></i></span></button>
+            <button class="pill" data-via="email"><b data-i18n="f.mail">Enviar por correo</b> <span><i class="ico ico--ne" aria-hidden="true"></i></span></button>
           </div>
           <p class="form__note" role="status"></p>
         </form>
@@ -221,8 +237,8 @@
 
   <footer class="foot">
     <div class="foot__row">
-      <p>© <span class="year"></span> ArkanMedia · Diseño web y apps en Veracruz</p>
-      <a href="#top" class="ulink">Volver arriba <i class="ico ico--up" aria-hidden="true"></i></a>
+      <p>© <span class="year"></span> ArkanMedia · <span data-i18n="foot.txt">Diseño web y apps · De Veracruz para el mundo</span></p>
+      <a href="#top" class="ulink"><span data-i18n="foot.top">Volver arriba</span> <i class="ico ico--up" aria-hidden="true"></i></a>
     </div>
     <p class="foot__word" aria-hidden="true">arkan<em>media</em></p>
   </footer>
@@ -234,9 +250,9 @@
       <div class="drawer__top">
         <span class="drawer__count"></span>
         <div class="drawer__nav">
-          <button class="drawer__prev" aria-label="Proyecto anterior"><i class="ico ico--left" aria-hidden="true"></i></button>
-          <button class="drawer__next" aria-label="Proyecto siguiente"><i class="ico ico--right" aria-hidden="true"></i></button>
-          <button class="drawer__close" data-close aria-label="Cerrar"><i class="ico ico--close" aria-hidden="true"></i></button>
+          <button class="drawer__prev" aria-label="Proyecto anterior" data-i18n-aria="d.prev"><i class="ico ico--left" aria-hidden="true"></i></button>
+          <button class="drawer__next" aria-label="Proyecto siguiente" data-i18n-aria="d.next"><i class="ico ico--right" aria-hidden="true"></i></button>
+          <button class="drawer__close" data-close aria-label="Cerrar" data-i18n-aria="d.close"><i class="ico ico--close" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="drawer__body" data-lenis-prevent>
@@ -256,7 +272,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="../js/projects.js?v=202610181933"></script>
-  <script src="js/main.js?v=202610181933"></script>
+  <script src="js/i18n.js?v=202610181946"></script>
+  <script src="../js/projects.js?v=202610181946"></script>
+  <script src="js/main.js?v=202610181946"></script>
 </body>
 </html>

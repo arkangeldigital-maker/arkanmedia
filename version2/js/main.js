@@ -37,7 +37,7 @@
     `<a href="#contacto" class="client client--cta"><span>¿Tu marca aquí?</span><b><i class="ico ico--ne" aria-hidden="true"></i></b></a>`;
 
   // ---------- ajuste de textos grandes: si una palabra no cabe, se reduce el tamaño ----------
-  const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span';
+  const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span, .client__name';
   const fitEl = el => {
     el.style.fontSize = '';
     const inline = getComputedStyle(el).display.startsWith('inline');
@@ -45,11 +45,13 @@
     const content = b => { const cs = getComputedStyle(b), r = b.getBoundingClientRect(); return { l: r.left + parseFloat(cs.paddingLeft) + b.clientLeft, r: r.left + b.clientLeft + b.clientWidth - parseFloat(cs.paddingRight) }; };
     const a = content(inline ? el.parentElement : el), p = content((inline ? el.parentElement : el).parentElement);
     const left = Math.max(a.l, p.l);
-    const avail = Math.min(a.r, p.r) - left - (inline ? 40 : 0);
+    const avail = (Math.min(a.r, p.r) - left) / (el.getBoundingClientRect().width / (el.offsetWidth || 1) || 1) - (inline ? 40 : 0);
     if (avail <= 0) return;
+    // las tarjetas apiladas están escaladas: se corrige la medida con la escala real
+    const sc = el.getBoundingClientRect().width / (el.offsetWidth || 1) || 1;
     for (let k = 0; k < 4; k++) {
       const r = document.createRange(); r.selectNodeContents(el);
-      const right = Math.max(...[...r.getClientRects()].map(x => x.right)) - left;
+      const right = (Math.max(...[...r.getClientRects()].map(x => x.right)) - left) / sc;
       if (right <= avail + .5) break;
       const fs = parseFloat(getComputedStyle(el).fontSize);
       el.style.fontSize = Math.max(12, fs * avail / right * .985) + 'px';

@@ -78,7 +78,7 @@
     'contact.aria': 'Message us on WhatsApp',
     'contact.r1': 'Shall we talk', 'contact.r2': 'about your', 'contact.r3': 'project?',
     'contact.lead': 'Tell us what you need and we’ll put together a tailor-made proposal, wherever you are.',
-    'contact.hours': 'Monday to Friday, 9 am – 7 pm · Saturday, 9 am – 2 pm<br>(Mexico City time)<br>Based in Veracruz, Mexico, working with clients worldwide',
+    'info.hours': 'Hours', 'info.week': 'Mon to Fri', 'info.sat': 'Saturday', 'info.tz': 'Mexico City time', 'info.where': 'Location', 'info.city': 'Veracruz, Mexico', 'info.world': 'Working with clients worldwide',
     'f.name': 'Your name', 'f.email': 'Your email', 'f.phone': 'Your phone', 'f.interest': 'I’m interested in',
     'f.c1': 'Website', 'f.c2': 'Mobile app', 'f.c3': 'Brand identity', 'f.c4': 'Online store', 'f.c5': 'SEO', 'f.c6': 'Software',
     'f.msg': 'Tell us your idea', 'f.wa': 'Send via WhatsApp', 'f.mail': 'Send by email',

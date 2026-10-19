@@ -368,6 +368,18 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 200; pointer-eve
 .pill--red:hover { background: var(--burnt); border-color: var(--burnt); }
 .form__note { margin: 10px 0 0; font-weight: 600; color: var(--red); min-height: 1.4em; }
 
+/* horario y ubicación en contacto */
+.info { margin: 18px 0 0; display: grid; gap: 14px; }
+.info__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 18px 20px; border-radius: 18px; background: var(--paper-2); }
+.info dt { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+.info__ico { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: #fff; }
+.info__ico svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.info dd { margin: 0; display: grid; gap: 6px; }
+.info__line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 16px; }
+.info__line b { font-weight: 700; color: var(--ink); white-space: nowrap; }
+.info__line span { color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.info small { font-size: 13px; color: var(--muted); }
+
 /* ---------- pie ---------- */
 .foot { background: var(--red); color: #fff; padding: 40px var(--pad) 0; overflow: hidden; }
 .foot__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; font-size: 14px; font-weight: 600; }

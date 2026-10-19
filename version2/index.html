@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=202610181906">
+  <link rel="stylesheet" href="css/style.css?v=202610181923">
 </head>
 <body class="is-loading">
 
@@ -59,11 +59,21 @@
     <section class="hero">
       <div class="hero__orb" aria-hidden="true"></div>
       <p class="hero__kicker split-up">Estudio digital · Desde el Puerto de Veracruz · +10 años</p>
-      <h1 class="hero__title" aria-label="Ideas que se ven y que venden">
+      <div class="hero__type">
+        <h1 class="hero__title" aria-label="Ideas que se ven y que venden">
         <span class="line"><span class="word">Ideas</span> <span class="word word--outline">que</span></span>
         <span class="line line--indent"><span class="word">se&nbsp;ven</span> <span class="hero__pill" aria-hidden="true"><img src="../assets/projects/screens/14801199212.jpg" alt=""></span></span>
         <span class="line"><span class="word word--red">&amp;</span> <span class="word word--red">venden.</span></span>
       </h1>
+        <!-- copia en blanco: solo se ve dentro del círculo rojo -->
+              <div class="hero__title hero__title--white" aria-hidden="true">
+        <span class="line"><span class="word">Ideas</span> <span class="word word--outline">que</span></span>
+        <span class="line line--indent"><span class="word">se&nbsp;ven</span> <span class="hero__pill" aria-hidden="true"><img src="../assets/projects/screens/14801199212.jpg" alt=""></span></span>
+        <span class="line"><span class="word word--red">&amp;</span> <span class="word word--red">venden.</span></span>
+      </div>
+      </div>
+      <p class="hero__coords" aria-hidden="true">19.1738° N<br>96.1342° O</p>
+      <div class="hero__scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
       <div class="hero__foot">
         <p class="hero__lead split-up">Diseñamos páginas web, apps e identidades <strong>100% a la medida</strong>. Sin plantillas, sin copiar a nadie: tu marca, contada como se merece.</p>
         <a href="#contacto" class="badge" aria-label="Cotiza tu proyecto">
@@ -83,6 +93,10 @@
 
     <!-- ESTUDIO / MANIFIESTO -->
     <section class="studio" id="estudio">
+      <svg class="deco deco--ring" data-speed="-.15" viewBox="0 0 200 200" aria-hidden="true" style="width:clamp(220px,30vw,460px);right:-6vw;top:8%"><circle cx="100" cy="100" r="96"/></svg>
+      <span class="deco deco--plus" data-speed=".2" aria-hidden="true" style="right:5%;top:3%"></span>
+      <span class="deco deco--plus" data-speed="-.25" aria-hidden="true" style="right:12%;bottom:22%"></span>
+      <span class="deco deco--dot" data-speed=".35" aria-hidden="true" style="left:46%;top:6%"></span>
       <p class="tag">(01) Estudio</p>
       <p class="manifesto">ArkanMedia nació para que cualquier empresa, de cualquier tamaño, tenga una presencia digital a la altura. Diseñamos, programamos y cuidamos cada detalle desde Veracruz, como una extensión de tu equipo.</p>
       <div class="numbers">
@@ -97,6 +111,8 @@
     <section class="services" id="servicios">
       <div class="services__head">
         <p class="tag">(02) Servicios</p>
+        <span class="deco deco--plus" data-speed=".3" aria-hidden="true" style="right:8%;top:30px"></span>
+        <span class="deco deco--dot" data-speed="-.2" aria-hidden="true" style="right:24%;top:120px"></span>
         <h2 class="big">Lo que <em>hacemos</em></h2>
       </div>
       <div class="stack">
@@ -131,6 +147,11 @@
     <!-- PROYECTOS: scroll horizontal -->
     <section class="work" id="proyectos">
       <div class="work__pin">
+        <div class="work__bg" aria-hidden="true">
+          <span class="work__word">Proyectos · Proyectos ·</span>
+          <span class="work__glow"></span>
+          <svg class="work__ring" viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" /></svg>
+        </div>
         <div class="work__head">
           <p class="tag">(03) Proyectos</p>
           <h2 class="big">Trabajo <em>seleccionado</em></h2>
@@ -145,13 +166,24 @@
     <section class="clients" id="clientes">
       <div class="clients__head">
         <p class="tag">(04) Clientes</p>
+        <svg class="deco deco--ring" data-speed=".12" viewBox="0 0 200 200" aria-hidden="true" style="width:clamp(140px,16vw,240px);right:4%;top:-40px"><circle cx="100" cy="100" r="96"/></svg>
+        <span class="deco deco--plus" data-speed="-.3" aria-hidden="true" style="left:52%;top:20px"></span>
         <h2 class="big">Marcas que <em>confían</em></h2>
       </div>
-      <div class="clients__grid" id="clients"></div>
+      <div class="logos" id="clients" aria-roledescription="carrusel" aria-label="Logos de clientes">
+        <div class="logos__viewport"><div class="logos__track"></div></div>
+        <div class="logos__ui">
+          <div class="logos__dots" role="tablist" aria-label="Elegir grupo de logos"></div>
+          <a href="#contacto" class="logos__cta">¿Tu marca aquí? Hablemos <i class="ico ico--ne" aria-hidden="true"></i></a>
+        </div>
+      </div>
     </section>
 
     <!-- CONTACTO -->
     <section class="contact" id="contacto">
+      <svg class="deco deco--ring" data-speed="-.1" viewBox="0 0 200 200" aria-hidden="true" style="width:clamp(260px,34vw,560px);right:-10vw;top:4%"><circle cx="100" cy="100" r="96"/></svg>
+      <span class="deco deco--plus" data-speed=".25" aria-hidden="true" style="left:3%;bottom:18%"></span>
+      <span class="deco deco--dot" data-speed="-.3" aria-hidden="true" style="right:30%;top:10%"></span>
       <p class="tag">(05) Contacto</p>
       <a href="https://wa.me/522297819005" target="_blank" rel="noopener" class="contact__big" aria-label="Escríbenos por WhatsApp">
         <span class="contact__row">¿Hablamos</span><span class="contact__row">de tu <span class="nw">proyecto?<span class="contact__arrow"><i class="ico ico--ne" aria-hidden="true"></i></span></span></span>
@@ -224,7 +256,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="../js/projects.js?v=202610181906"></script>
-  <script src="js/main.js?v=202610181906"></script>
+  <script src="../js/projects.js?v=202610181923"></script>
+  <script src="js/main.js?v=202610181923"></script>
 </body>
 </html>

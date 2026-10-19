@@ -32,9 +32,9 @@
     ['moncheri', 'Monchéri'], ['hasue', 'Hasue de México'], ['kidiatras', 'Kidiatras'], ['drraul', 'Dr. Raúl Barragán'],
     ['ejemex', 'Ejecutivos Mexicanos'],
   ];
-  // 33 logos + una celda de 3 columnas cierra la rejilla en 6, 4 o 3 columnas
-  $('#clients').innerHTML = clients.map(([f, n]) => `<div class="client"><img src="../assets/clients-t/${f}.png" alt="${n}" loading="lazy"><span class="client__name">${n}</span></div>`).join('') +
-    `<a href="#contacto" class="client client--cta"><span>¿Tu marca aquí?</span><b><i class="ico ico--ne" aria-hidden="true"></i></b></a>`;
+  const clientCard = ([f, n], clone) => `<div class="client"${clone ? ' aria-hidden="true"' : ''}><img src="../assets/clients-t/${f}.png" alt="${clone ? '' : n}" loading="lazy" draggable="false"><span class="client__name">${n}</span></div>`;
+  // los primeros 6 se repiten al final para que el recorrido sea infinito sin saltos visibles
+  $('.logos__track').innerHTML = clients.map(c => clientCard(c)).join('') + clients.slice(0, 6).map(c => clientCard(c, true)).join('');
 
   // ---------- ajuste de textos grandes: si una palabra no cabe, se reduce el tamaño ----------
   const FIT = '.hero__title, .big, .scard h3, .contact__big, .foot__word, .menu__links a, .drawer h3, .pcard__meta h3, .num strong, .loader__count, .manifesto, a.client--cta span, .client__name';
@@ -62,6 +62,20 @@
   addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => { fitAll(); window.ScrollTrigger?.refresh(); }, 150); });
   fitAll();
   document.fonts?.ready.then(() => { fitAll(); window.ScrollTrigger?.refresh(); });
+
+  // ---------- hero: las letras que cruzan el círculo rojo se ven blancas ----------
+  const orb = $('.hero__orb'), white = $('.hero__title--white');
+  let heroOn = true;
+  new IntersectionObserver(([e]) => { heroOn = e.isIntersecting; }).observe($('.hero'));
+  const paintMask = () => {
+    if (heroOn) {
+      const o = orb.getBoundingClientRect(), c = white.getBoundingClientRect();
+      const r = +getComputedStyle(orb).opacity > .5 ? o.width / 2 : 0, x = o.left + o.width / 2 - c.left, y = o.top + o.height / 2 - c.top;
+      white.style.setProperty('--orb-mask', `radial-gradient(circle ${r}px at ${x}px ${y}px, #000 ${r - .5}px, transparent ${r + .5}px)`);
+    }
+    requestAnimationFrame(paintMask);
+  };
+  requestAnimationFrame(paintMask);
 
   // ---------- reloj de Veracruz ----------
   const clock = $('.clock');
@@ -201,6 +215,44 @@
     note.textContent = '¡Gracias! Te respondemos muy pronto.';
   });
 
+  // ---------- slider de clientes ----------
+  (() => {
+    const wrap = $('#clients'), vp = $('.logos__viewport', wrap), track = $('.logos__track', wrap), dotsEl = $('.logos__dots', wrap);
+    const N = clients.length;
+    let per = 6, i = 0, timer = null, busy = false;
+    const itemW = () => vp.clientWidth / per;
+    const setX = (anim) => {
+      track.style.transition = anim && !reduce ? 'transform .9s cubic-bezier(.65, 0, .35, 1)' : 'none';
+      track.style.transform = `translate3d(${-i * itemW()}px,0,0)`;
+    };
+    const paintDots = () => { const g = Math.floor((i % N) / per); $$('button', dotsEl).forEach((d, k) => { d.classList.toggle('is-active', k === g); d.setAttribute('aria-selected', k === g); }); };
+    const buildDots = () => {
+      per = parseInt(getComputedStyle(wrap).getPropertyValue('--per')) || 6;
+      const groups = Math.ceil(N / per);
+      dotsEl.innerHTML = Array.from({ length: groups }, (_, k) => `<button role="tab" aria-label="Logos ${k * per + 1} a ${Math.min(N, (k + 1) * per)}"></button>`).join('');
+      $$('button', dotsEl).forEach((d, k) => d.addEventListener('click', () => { go(k * per); restart(); }));
+      i = Math.min(i, N - 1); setX(false); paintDots();
+    };
+    const go = n => {
+      if (n < 0) { i += N; setX(false); void track.offsetWidth; n += N; }
+      i = Math.min(n, N); setX(true); paintDots();
+    };
+    track.addEventListener('transitionend', () => { if (i >= N) { i -= N; setX(false); } });
+    const restart = () => { clearInterval(timer); if (!reduce) timer = setInterval(() => { if (!busy && !document.hidden) go(i + 1); }, 2400); };
+    wrap.addEventListener('pointerenter', () => { busy = true; });
+    wrap.addEventListener('pointerleave', () => { busy = false; });
+    // deslizar con el dedo o arrastrando
+    let x0 = null;
+    vp.addEventListener('pointerdown', e => { x0 = e.clientX; });
+    addEventListener('pointerup', e => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) { go(i + (dx < 0 ? per : -per)); restart(); }
+    });
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildDots, 150); });
+    buildDots(); restart();
+  })();
+
   // ---------- manifiesto: separa en palabras ----------
   const man = $('.manifesto');
   man.innerHTML = man.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' ');
@@ -240,7 +292,7 @@
     const orbY = gsap.quickTo('.hero__orb', 'y', { duration: 1.2, ease: 'power3' });
     $('.hero').addEventListener('pointermove', e => { orbX((e.clientX / innerWidth - .5) * 80); orbY((e.clientY / innerHeight - .5) * 80); });
   }
-  gsap.to('.hero__title', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hero__type', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.to('.hero__orb', { yPercent: 40, scale: .7, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
   // ---------- cinta: avanza sola y acelera con la velocidad del scroll ----------
@@ -284,6 +336,8 @@
       const tween = gsap.to(tr, { x: () => -dist(), ease: 'none',
         scrollTrigger: { trigger: '.work', pin: '.work__pin', start: 'top top', end: () => '+=' + dist(), scrub: 1, invalidateOnRefresh: true,
           onUpdate: s => gsap.set('.work__progress span', { scaleX: s.progress }) } });
+      // la palabra del fondo avanza en sentido contrario, más lento
+      gsap.to('.work__word', { xPercent: -35, ease: 'none', scrollTrigger: { trigger: '.work', start: 'top top', end: () => '+=' + dist(), scrub: true, invalidateOnRefresh: true } });
       // cada tarjeta se inclina un poco mientras pasa
       $$('.pcard', tr).forEach(card => {
         gsap.fromTo($('.pcard__media', card), { rotate: 3, scale: .92 }, { rotate: -3, scale: 1, ease: 'none',
@@ -298,13 +352,13 @@
     },
   });
 
-  // ---------- proyectos: el bloque oscuro crece de tarjeta a pantalla completa ----------
-  gsap.fromTo('.work', { clipPath: () => `inset(0 ${innerWidth < 761 ? 12 : 32}px round 32px)` },
-    { clipPath: 'inset(0 0px round 0px)', ease: 'none', immediateRender: true,
-      scrollTrigger: { trigger: '.work', start: 'top bottom', end: 'top top', scrub: true, invalidateOnRefresh: true } });
+  // ---------- detalles gráficos: se desplazan a distinta velocidad ----------
+  $$('.deco[data-speed]').forEach(el => {
+    gsap.to(el, { y: () => +el.dataset.speed * 400, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
+  });
 
   // ---------- clientes: aparecen en cascada ----------
-  gsap.from('.client', { opacity: 0, y: 30, duration: .8, ease: 'power3.out', stagger: { each: .03, from: 'random' }, scrollTrigger: { trigger: '.clients__grid', start: 'top 85%' } });
+  gsap.from('.logos', { opacity: 0, y: 40, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.logos', start: 'top 88%' } });
 
   // ---------- pie: la palabra gigante sube ----------
   gsap.from('.foot__word', { yPercent: 60, ease: 'none', scrollTrigger: { trigger: '.foot', start: 'top bottom', end: 'bottom bottom', scrub: true } });

@@ -284,4 +284,11 @@ ${urls.map(([u, pr]) => `  <url>
   </url>`).join('\n')}
 </urlset>
 `);
+// revisión final: ninguna página debe mostrar código como texto (restos de scripts o plantillas)
+const generated = [...fs.readdirSync(path.join(V2, 'servicios')).map(f => path.join(V2, 'servicios', f)), ...fs.readdirSync(path.join(V2, 'proyectos')).map(f => path.join(V2, 'proyectos', f)), path.join(V2, 'index.html')];
+const broken = generated.filter(f => {
+  const visible = fs.readFileSync(f, 'utf8').replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<!--[\s\S]*?-->/g, '').replace(/<[^>]+>/g, ' ');
+  return /\$\{|catch\(|function\s*\(|<\/?script|=>|&#39;\}|`/.test(visible);
+});
+if (broken.length) { console.error('ERROR: texto de código visible en:\n' + broken.join('\n')); process.exit(1); }
 console.log(`ok: ${SERVICES.length} servicios, ${PROJECTS.length} proyectos`);
